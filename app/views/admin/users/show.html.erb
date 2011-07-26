@@ -1,0 +1,17 @@
+<h1>
+<%=h@user.employee.complete_name%><font size=2>&nbsp;[<%= link_to "Edit", edit_admin_user_path(@user) %>]</font></h1>
+
+<div class="post">
+<table id="shows" align="center">
+
+<tr><td width="120">Employee Name: </td>
+<td><%=link_to @user.employee.complete_name, admin_employee_path()%></td>
+</tr>
+<tr><td>Username: </td>
+<td><i><%=h @user.username %></i></td>
+</tr>
+</table>
+</div>
+
+
+

@@ -1,0 +1,40 @@
+<h1>
+<%=h@event.name%><font size=2>&nbsp;[<%= link_to "Edit", edit_admin_event_path(@event) %>]</font></h1>
+
+<div class="post">
+<table id="shows" align="center">
+<tr>
+	<td rowspan="6" width="400" height="300" align="center">
+
+<% if @event.img_url.blank?%>
+	<img src="/images/data/noimage.jpg" alt="NO IMAGE AVAILABLE" width="400"; height=auto; />
+<% else %>
+	<img src="<%= @event.img_url%>" alt="<%=h@event.img_description%>"  width="400"; height=auto />
+<% end %>
+
+	</td>
+<tr>
+
+<tr><td width="100">Event Name: </td>
+<td><%=h@event.name%></td>
+</tr>
+
+<tr><td>Capacity: </td> 
+<td><%= @event.capacity%></td>
+</tr>
+
+<tr><td>Event Location: </td> 
+<td><%= link_to @event.habitat.name, admin_habitat_path(@event.habitat) %></td>
+</tr>
+
+<tr>
+<td colspan="2"><%=h @event.description %></td>
+</tr>
+</table>
+
+
+
+
+
+<%= render :partial=> 'trainers', :locals => {:event => @event} %>
+<%= render :partial=> 'animals', :locals => {:event => @event} %>

@@ -1,0 +1,21 @@
+<table border="2" align="center" >
+<tr class="table_head"><td><b><%= link_to "ID", "/admin/user/page/#{@current_page}/sort/id" %></b></td>
+    <td><b><%= link_to "USERNAME", "/admin/user/page/#{@current_page}/sort/id" %></b></td>
+	<td><b>EMPLOYEE</b></td>
+    <td><b>OPERATIONS</b></td>
+</tr>
+<% @users.each do |u| %>
+<tr>
+<td><%= u.id %></td>
+<td><%= u.username %></td>
+<td><%=link_to u.employee.complete_name, admin_employee_path(u.employee)%></td>
+<td>	<%= link_to "Edit", edit_admin_user_path(u) %>
+         <%= link_to "Delete", admin_user_path(u), :confirm=>"Are you sure?",:method=>'delete' %>
+</td>
+</tr>
+  <% end %>
+</table>
+
+
+
+

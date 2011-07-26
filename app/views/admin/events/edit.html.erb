@@ -1,0 +1,7 @@
+<h1>Edit Event</h1>
+
+<% form_for @event, :url=>admin_event_path(@event), :html => {:multipart => true} do |f| %>
+  <%= render :partial=>'form', :locals=>{:f=>f,:button=>'Update'}%>
+<% end %>
+
+

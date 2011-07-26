@@ -1,0 +1,22 @@
+<h1>
+<%=h@sponsor.name%><font size=2>&nbsp;[<%= link_to "Edit", edit_admin_sponsor_path(@sponsor) %>]</font></h1>
+
+<div class="post">
+<table id="shows" align="center">
+
+<tr><td width="120">Name: </td>
+<td><%=h @sponsor.name %></td>
+</tr>
+<tr><td>Contact No.: </td>
+<td><%=h @sponsor.contact_no %></td>
+</tr>
+<tr><td>Sponsorship level:</td>
+<td><b><%= @sponsor.sponsorship_level %></b></td>
+<tr>
+<td>Status: </td>
+<td><%= @sponsor.status %></td>
+</tr>
+
+</tr>
+</table>
+</div>

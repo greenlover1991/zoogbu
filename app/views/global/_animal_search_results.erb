@@ -1,0 +1,23 @@
+<h1>Animals </h1>
+	<table style="width:900px; margin:auto;">
+		<tr>
+			<th> Name</th>
+			<th> BirthDate</th>
+			<th> Age</th>
+			<th> Gender</th>
+			<th> Height</th>
+			<th> Weight</th>
+		</tr>
+		
+	<% for animal in @animals %> 	
+		<tr>
+			<td> <%= link_to animal.name, "/zoogle/animal_profile/#{animal.id}" %> </td>
+			<td> <%= animal.birthdate %> </td>
+			<td> <%= animal.age %> </td>
+			<td> <%= animal.gender %> </td>
+			<td> <%= animal.height %> </td>
+			<td> <%= animal.weight %> </td>
+		</tr>
+		
+	<% end %>
+	</table>

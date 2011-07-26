@@ -1,0 +1,25 @@
+<h1>
+Maintenance for <%=h@maintenance.habitat.name%><font size=2>&nbsp;[<%= link_to "Edit", edit_admin_maintenance_path(@maintenance) %>]</font></h1>
+
+<div class="post">
+<table id="shows" align="center">
+
+<tr><td width="150">Habitat maintained:</td>
+<td><%= link_to h(@maintenance.habitat.name), admin_habitat_path(@maintenance.habitat) %></td>
+</tr>
+
+<tr><td>Maintenance date:</td> 
+<td><%= @maintenance.maintenance_date.strftime("%B %d, %Y, %A") %></td>
+</tr>
+
+<tr><td>Maintenance time:</td> 
+<td><%= @maintenance.maintenance_time.strftime("%I : %M %p") %></td>
+</tr>
+
+<tr><td colspan="2"><%=h @maintenance.description %></td>
+</tr>
+</table>
+
+<%= render :partial=> 'zookeepers', :locals => {:maintenance => @maintenance} %>
+<%= render :partial=> 'foods', :locals => {:maintenance => @maintenance} %>
+</div>

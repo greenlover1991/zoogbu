@@ -1,0 +1,23 @@
+<table border="2" align="center" >
+<tr class="table_head"><td><b><%= link_to "ID", "/admin/post/page/#{@current_page}/sort/id" %></b></td>
+    <td><b><%= link_to "TITLE", "/admin/post/page/#{@current_page}/sort/title" %></b></td>
+	<td><b><%= link_to "STATUS", "/admin/post/page/#{@current_page}/sort/status" %></b></td>
+    <td><b>OPERATIONS</b></td>
+</tr>
+<% @posts.each do |post| %>
+<tr>
+<td><%= post.id %></td>
+<td><%= post.title %></td>
+<td><%= post.status %></td>
+
+<td>	<%= link_to "Show", admin_post_path(post) %>
+		<%= link_to "Edit", edit_admin_post_path(post) %>
+         <%= link_to "Delete", admin_post_path(post), :confirm=>"Are you sure?",:method=>'delete' %>
+</td>
+</tr>
+  <% end %>
+</table>
+
+
+
+

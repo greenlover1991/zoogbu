@@ -1,0 +1,45 @@
+<div id=main class="wide" >
+
+			<div id="search_box" >
+			
+				<script type=text/javascript>
+					function setHidden(elem)
+					{
+						document.getElementById(elem).style.visibility = "hidden";
+					}
+					
+					function setVisible(elem)
+					{
+						document.getElementById(elem).style.visibility = "visible";
+					}
+					
+				</script>
+					
+				<% form_tag "/zoogle/find" do %>
+				Keyword: <%= text_field_tag :search_string %>
+	
+				Search by: 
+				
+				<input type=radio name=search_type value="Animal" checked=checked onclick="setVisible('animal_search_filters');setHidden('habitat_search_filters');setHidden('event_search_filters');" /> Animal
+				<input type=radio name=search_type value="Habitat" onclick="setHidden('animal_search_filters');setVisible('habitat_search_filters');setHidden('event_search_filters');" /> Habitat
+				<input type=radio name=search_type value="Event" onclick="setHidden('animal_search_filters');setHidden('habitat_search_filters');setVisible('event_search_filters');" /> Event
+				
+				<div id=animal_search_filters style="visibility:visible;">
+					<%= render :partial=>'animal_search_filters' %>
+				</div>
+				
+				<div id=habitat_search_filters style="visibility:hidden;position:relative;top:-60px;">
+					<%= render :partial=>'habitat_search_filters' %>
+				</div>
+				
+				<div id=event_search_filters style="visibility:hidden;position:relative;top:-90px;">
+					<%= render :partial=>'event_search_filters' %>
+				</div>
+				
+				<div style="position:relative;top:-50px;">
+				<%= submit_tag "Search" %>
+				</div>
+				<% end %>
+			</div>
+
+</div>

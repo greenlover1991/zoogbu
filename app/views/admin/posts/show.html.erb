@@ -1,0 +1,46 @@
+<h1>
+<%=h @post.title %><font size=2>&nbsp;[<%= link_to "Edit", edit_admin_post_path(@post) %>]</font></h1>
+
+<div class="post">
+<table id="shows" align="center">
+<tr>
+<td width="400" height="300" align="center">
+
+<% if @post.img_url.blank?%>
+	<img src="/images/data/noimage.jpg" alt="NO IMAGE AVAILABLE" width="400"; height=auto; />
+<% else %>
+	<img src="<%= @post.img_url%>" alt="<%=@post.img_description%>"  width="400"; height=auto />
+<% end %>
+	</td>
+</tr>
+
+<tr><td width="120">Post author: </td>
+<td><%=h @post.author %></td>
+</tr>
+<tr><td>Post: </td>
+<td><%=h @post.body %></td>
+</tr>
+<tr><td>Status: </td>
+<td><%= @post.status %></td>
+</tr>
+<tr><td>Created At:</td>
+<td><%= @post.created_at.strftime("%B %d, %Y, %A %I : %M %p") %>
+</td>
+</tr>
+<tr><td>Comments:</td>
+<td><% @post.comments.each do |com| %>
+		<h4><%= link_to com.author, admin_comment_path(com) %> [<%= com.status %>]</h4>
+		<p>
+			<li><%= com.body %></li>
+		</p>
+	<% end %>
+</td>
+</tr>
+
+</table>
+</div>
+
+
+
+
+

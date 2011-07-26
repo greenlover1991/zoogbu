@@ -1,0 +1,19 @@
+<table border="2" align="center" >
+<tr class="table_head"><td><b><%= link_to "ID", "/admin/zoomap/page/#{@current_page}/sort/id" %></b></td>
+    <td><b><%= link_to "ZOOMAP NAME", "/admin/zoomap/page/#{@current_page}/sort/name" %></b></td>
+    <td><b>OPERATIONS</b></td>
+</tr>
+<% @zoomaps.each do |zm| %>
+<tr>
+<td><%= zm.id %></td>
+<td><%= zm.name%></td>
+<td>	<%= link_to "Show", admin_zoomap_path(zm) %>
+	<%= link_to "Edit", edit_admin_zoomap_path(zm) %>
+	<%= link_to "Delete", admin_zoomap_path(zm), :confirm=>"Are you sure?",:method=>'delete' %>
+</td>
+</tr>
+  <% end %>
+</table>
+
+
+

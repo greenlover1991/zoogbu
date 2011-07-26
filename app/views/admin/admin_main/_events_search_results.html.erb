@@ -1,0 +1,17 @@
+	<table id="search_table" align="center">
+		<tr class="table_caption"><td colspan=3>EVENTS SEARCH RESULTS</td></tr>
+		<tr class="table_head">
+			<td>Event Name</td>
+			<td>Location</td>
+			<td>Description</td>
+		</tr>
+		
+	<% for event in @events %> 	
+		<tr>
+			<td> <%= link_to event.name, admin_event_path(event) %> </td>
+			<td> <%= link_to event.habitat.name, admin_habitat_path(event.habitat) %> </td>
+			<td> <%= event.description %> </td>
+		</tr>
+	<% end %>
+	
+</table>

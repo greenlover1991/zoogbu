@@ -1,0 +1,7 @@
+<h1>Edit Maintenance</h1>
+
+<% form_for @maintenance, :url=>admin_maintenance_path(@maintenance) do |f| %>
+  <%= render :partial=>'form', :locals=>{:f=>f,:button=>'Update'}%>
+<% end %>
+
+

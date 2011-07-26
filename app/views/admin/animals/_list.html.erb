@@ -1,0 +1,26 @@
+<table border="2" align="center" >
+<tr class="table_head"><td><b><%= link_to "ID", "/admin/animal/page/#{@current_page}/sort/id" %></b></td>
+    <td><b>SCIENTIFIC NAME</b></td>
+    <td><b><%= link_to "NAME", "/admin/animal/page/#{@current_page}/sort/name" %></b></td>
+    <td><b><%= link_to "AGE", "/admin/animal/page/#{@current_page}/sort/age" %></b></td>
+    <td><b><%= link_to "VALUE", "/admin/animal/page/#{@current_page}/sort/value" %></b></td>
+    <td><b>MOTTO</b></td>
+    <td><b>OPERATIONS</b></td>
+</tr>
+<% @animals.each do |a| %>
+<tr>
+<td><%=a.id %></td>
+<td><%= a.scientific_name %> </td>
+<td><%= a.name %></td>
+<td><%= a.age %></td>
+<td><%=a.value %></td>
+<td><%=a.motto %></td>
+<td>	<%= link_to "Show", admin_animal_path(a) %>
+	<%= link_to "Edit", edit_admin_animal_path(a) %>
+	<%= link_to "Delete", admin_animal_path(a), :confirm=>"Are you sure?",:method=>'delete' %>
+</td>
+</tr>
+  <% end %>
+</table>
+
+

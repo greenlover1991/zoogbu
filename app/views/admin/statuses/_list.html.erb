@@ -1,0 +1,18 @@
+<table border="2" align="center" >
+<tr class="table_head"><td><b><%= link_to "ID", "/admin/status/page/#{@current_page}/sort/id" %></b></td>
+    <td><b><%= link_to "STATUS", "/admin/status/page/#{@current_page}/sort/name" %></b></td>
+    <td><b>DESCRIPTION</b></td>
+    <td><b>OPERATIONS</b></td>
+</tr>
+<% @statuses.each do |p| %>
+<tr>
+<td><%= p.id %></td>
+<td><%=h p.name %> </td>
+<td><%= p.description %> </td>
+<td>	<%= link_to "Edit", edit_admin_status_path(p) %>
+         <%= link_to "Delete", admin_status_path(p), :confirm=>"Are you sure?",:method=>'delete' %>
+</td>
+</tr>
+  <% end %>
+</table>
+

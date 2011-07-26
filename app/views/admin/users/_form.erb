@@ -1,0 +1,26 @@
+<%= f.error_messages %>
+
+<p>
+<%= f.label "UserName:"%> </br>
+<%= f.text_field :username %>
+</p>
+
+<p>
+<%= f.label "Password:"%> </br>
+<%= f.password_field :password %>
+</p>
+
+
+<p>
+<%= f.label "Confirm Password:"%> </br>
+<%= f.password_field :password_confirmation %>
+</p>
+
+
+<%= f.label "Employee:" %></br> 
+<%= f.collection_select :employee_id, Employee.find(:all, :order=>"first_name", :conditions=>"employee_type = 'Administrator' OR employee_type = 'Human Resource' OR employee_type = 'Trainer' OR employee_type = 'Zookeeper' "), :id, :complete_name, :prompt =>"Select an employee"%>
+
+
+<p>
+<%= f.submit button%>
+</p>

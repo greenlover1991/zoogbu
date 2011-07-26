@@ -1,0 +1,26 @@
+<%= f.error_messages %>
+
+<p>
+<%= f.label "Name:"%> </br>
+<%= f.text_field :name %>
+</p>
+
+<p>
+<%= f.label "Contact No. :"%> </br>
+<%= f.text_field :contact_no %>
+</p>
+
+<p>
+<%= f.label "Sponsorship level:"%> </br>
+<%= f.select :sponsorship_level, 1..10 %>
+</p>
+
+
+<%= f.label "Status:"%> </br>
+<%= f.select :status, ["Pending","Active","Cancelled"] %>
+</p>
+
+
+<p>
+<%= f.submit button%>
+</p>

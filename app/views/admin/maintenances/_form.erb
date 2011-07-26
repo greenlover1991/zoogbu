@@ -1,0 +1,50 @@
+<%= f.error_messages %>
+
+
+<p>
+<%= f.label "Habitat to be maintained:" %></br> 
+<%= f.collection_select :habitat_id, Habitat.find(:all, :order=>"name"), :id, :name, :prompt =>"Select a Habitat"%>
+</p>
+
+<p>
+<%= f.label "Maintenance Date:" %></br>
+<%= f.date_select :maintenance_date %>
+</p>
+
+
+<p>
+<%= f.label "Maintenance Time:" %></br>
+<%= f.time_select :maintenance_time %>
+</p>
+
+<p>
+<%= f.label "Description:"%> </br> 
+<%= f.text_area :description %>
+</p>
+
+<p> 
+<h2> Assign to Zookeepers: </h2> 
+<ul>
+<% Employee.find_all_by_employee_type("Zookeeper", :order=>"last_name").each do |z| %>
+   <li>
+	 <%= check_box_tag "maintenance[employee_ids][]", z.id, @maintenance.employees.include?(z) %>
+	 <%= z.last_name %> , <%= z.first_name %>
+   </li>
+<% end %>
+</ul>
+</p>
+
+
+<p> 
+<h2> Foods to be consumed: </h2> 
+<% Food.find(:all, :order=>"name").each do |food| %>
+   <%= check_box_tag "maintenance[food_ids][]", food.id, @maintenance.foods.include?(food) %>
+   <%= food.name %> | <%= food.qty_on_hand %> unit/s left.  Qty. to be used:
+   <%= text_field_tag "maintenance[food_qtys][#{food.id}]", @maintenance.consumptions.find_by_food_id(food.id).nil? ? 0 : @maintenance.consumptions.find_by_food_id(food.id).qty_used %>
+   </br>
+<% end %>
+</p>
+
+<p>
+<%= f.submit button%>
+</p>

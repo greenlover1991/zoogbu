@@ -1,0 +1,33 @@
+<%= f.error_messages %>
+
+<p>
+<%= f.label "First Name:"%> </br>
+<%= f.text_field :first_name %>
+</p>
+
+
+<p>
+<%= f.label "Last Name:"%> </br>
+<%= f.text_field :last_name %>
+</p>
+
+
+<p>
+<%= f.label "Email address:"%> </br>
+<%= f.text_field :email %>
+</p>
+
+
+<p>
+<%= f.label "Contact Number:"%> </br>
+<%= f.text_field :contact_no %>
+</p>
+<p>
+
+<%= f.label "Status:"%> </br>
+<%= f.select :status, ["Pending","Active","Cancelled"] %>
+</p>
+
+<p>
+<%= f.submit button%>
+</p>

@@ -1,0 +1,25 @@
+<table border="2" align="center" >
+<tr class="table_head"><td><b><%= link_to "ID", "/admin/comment/page/#{@current_page}/sort/id" %></b></td>
+    <td><b><%= link_to "AUTHOR", "/admin/comment/page/#{@current_page}/sort/author" %></b></td>
+	<td><b>POST</b></td>
+	<td><b><%= link_to "STATUS", "/admin/comment/page/#{@current_page}/sort/status" %></b></td>
+    <td><b>OPERATIONS</b></td>
+</tr>
+<% @comments.each do |com| %>
+<tr>
+<td><%=h com.id %></td>
+<td><%=h com.author %></td>
+<td><%= link_to com.post.title, admin_post_path(com.post) %></td>
+<td><%=h com.status %></td>
+
+<td>	<%= link_to "Show", admin_comment_path(com) %>
+		<%= link_to "Edit", edit_admin_comment_path(com) %>
+         <%= link_to "Delete", admin_comment_path(com), :confirm=>"Are you sure?",:method=>'delete' %>
+</td>
+</tr>
+  <% end %>
+</table>
+
+
+
+

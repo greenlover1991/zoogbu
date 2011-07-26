@@ -1,0 +1,19 @@
+<table border="2" align="center" >
+<tr class="table_head"><td><b><%= link_to "ID", "/admin/animal/page/#{@current_page}/sort/id" %></b></td>
+    <td><b><%= link_to "HABITAT NAME", "/admin/animal/page/#{@current_page}/sort/habitat" %></b></td>
+    <td><b>OPERATIONS</b></td>
+</tr>
+<% @habitats.each do |hb| %>
+<tr>
+<td><%= hb.id %></td>
+<td><%= hb.name%></td>
+<td>	<%= link_to "Show", admin_habitat_path(hb) %>
+	<%= link_to "Edit", edit_admin_habitat_path(hb) %>
+	<%= link_to "Delete", admin_habitat_path(hb), :confirm=>"Are you sure? This will delete #{hb.animals_count} animals.",:method=>'delete' %>
+</td>
+</tr>
+  <% end %>
+</table>
+
+
+

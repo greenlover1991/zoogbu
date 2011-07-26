@@ -1,0 +1,92 @@
+<h1>
+<%=h@animal.name%><font size=2>&nbsp;[<%= link_to "Edit", edit_admin_animal_path(@animal) %>]</font></h1>
+
+<div class="post">
+<table id="shows" align="center">
+<tr>
+	<td width="400" height="300" align="center">
+
+<% if @animal.img_url.blank?%>
+	<img src="/images/data/noimage.jpg" alt="NO IMAGE AVAILABLE" width="400"; height=auto; />
+<% else %>
+	<img src="<%=h @animal.img_url%>" alt="<%=h @animal.img_description%>"  width="400"; height=auto />
+<% end %>
+	</td>
+	<td valign="top">
+		<%=h @animal.description %>
+	</td>
+
+</tr>
+</table>
+
+<table id="shows" align="center">
+<tr>
+    <td width="200" valign="top">Scientific Name: </td>
+    <td valign="top"><i><%=h @animal.scientific_name %></i></td>
+  </tr>
+
+  <tr>
+    <td valign="top">Taxonomy: </td>
+    <td valign="top">Kingdom:&nbsp;<%=h @animal.kingdom.name %>
+<br>Phylum:&nbsp;<%=h @animal.phylum.name %>
+<br>Class:&nbsp;<%=h @animal.aclass.name %>
+<br>Order:&nbsp;<%=h @animal.aorder.name %>
+<br>Family:&nbsp;<%=h @animal.family.name %>
+<br>Genus:&nbsp;<%=h @animal.genus.name %>
+<br>Species:&nbsp;<%=h @animal.species.name %>
+</td>
+  </tr>
+  <tr >
+    <td>Habitat: </td>
+    <td><%= link_to @animal.habitat.name, admin_habitat_path(@animal.habitat) %></td>
+  </tr>
+
+
+  <tr>
+    <td>Birthdate: </td>
+    <td><%= @animal.birthdate.strftime("%B %d, %Y, %A") %></td>
+  </tr>
+
+  <tr>
+    <td>Age: </td>
+    <td><%=h @animal.age %></td>
+  </tr>
+  <tr>
+    <td>Gender: </td>
+    <td><%=h @animal.gender %></td>
+  </tr>
+
+  <tr>
+    <td>Value: </td>
+    <td><%=h @animal.value %></td>
+  </tr>
+  <tr>
+    <td>Motto: </td>
+    <td><%=h @animal.motto %></td>
+  </tr>
+  <tr>
+    <td>Acquisition: </td>
+    <td><%=h @animal.acquisition %></td>
+  </tr>
+  <tr>
+    <td>Height: </td>
+    <td><%=h @animal.height %></td>
+  </tr>
+  <tr>
+    <td>Weight: </td>
+    <td><%=h @animal.weight %></td>
+  </tr>
+  <tr >
+    <td>Buyer: </td>
+    <td><%=h @animal.adoption ? @animal.adoption.buyer.name : "None"%></td>
+  </tr>
+  <tr >
+    <td>Sponsor: </td>
+    <td><%=h @animal.sponsorship ? @animal.sponsorship.sponsor.name : "None"%></td>
+  </tr>
+</table>
+
+<%= render :partial=> 'statuses', :locals => {:animal => @animal}%>
+
+</div>
+

@@ -1,0 +1,65 @@
+<div id="index_posts">
+
+<% for post in @posts %>
+	<div id="post">
+		
+		<h2> <%=h post.title %> </h2>
+		<h5>by <%=h post.author %> on <%= post.created_at.strftime("%B %d, %Y, %A, %I : %M %p") %></h5>
+		<table>
+		<tr>
+		<td>
+		<%= "<img src='#{post.img_url}' width=200px />"  if post.img_url %>
+		</td>
+		<td valign="top">
+		<p> <%= post.body %> </p>
+		</td>
+		</tr>
+		</table>
+		<br />
+		<% for comment in post.comments %>	
+				<% if comment.status == "Active" %>
+					<table>
+						<tr>
+							<td>
+								<div id="comments">
+										<p><%=h comment.author %> : <%=h comment.body %> </p>
+								</div>
+							</td>
+						</tr>
+					</table>
+				<% end %>
+		<% end %>
+		<div id=add_comment>
+			<a onclick="document.getElementById('<%= "comment_form" + "#{post.id}"%>').style.visibility= 'visible';document.getElementById('add_comment').style.visibility = 'hidden';" style="cursor:pointer"> Add a comment </a>
+		</div>
+		<div id=comment_form<%=post.id%> style="visibility:hidden;">
+			<% form_for @comment, :url=>'/commenting' do |f| %>
+					<%= f.hidden_field :post_id, :value=>post.id %>
+					Author: <p><%= f.text_field :author %> <a onclick="document.getElementById('<%= "comment_form" + "#{post.id}"%>').style.visibility= 'hidden';document.getElementById('add_comment').style.visibility='visible';" style="cursor:pointer">x</a></p> 
+					Comment: <p><%= f.text_area :body, :cols=>25, :rows=>2 %></p>
+				<%= f.submit "Comment" %>
+			<% end %>
+		</div>	
+	</div>
+	<br />
+<% end %>
+
+
+
+</div>
+
+<% if @current_page > 1 %>
+	<%= link_to "recent posts", "/index/page/#{@current_page-1}" %>
+<% end %>
+
+<% @no_of_pages.times do |page|%>
+	<% unless page+1 == @current_page %>
+		<%= link_to page+1, "/index/page/#{page+1}" %>
+	<% else %>
+		<%= page+1 %>
+	<% end %>
+<% end %>
+
+<% if @current_page < @no_of_pages %>
+	<%= link_to "older posts", "/index/page/#{@current_page+1}" %>
+<% end %>

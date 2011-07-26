@@ -1,0 +1,15 @@
+			<div id=main class=map>
+			<% if @zoomap %>
+				<img src="<%= @zoomap.img_url %>" width="980" height="612" border="10" usemap="#<%=h @zoomap.name%>" />
+				
+				
+				<map name="<%=h @zoomap.name %>" id="Map">
+					<% @zoomap.map_areas.each do |ma| %>
+						<area id="<%= ma.name %>" shape=rect coords="<%= ma.x1 %>,<%= ma.y1 %>,<%= ma.x2 %>,<%= ma.y2 %>" href="/zoogle/habitat_profile/<%= ma.habitat.id %>" title="<%= ma.name%>" />
+					<% end %>
+				</map>
+				
+			<% end %>
+			
+
+</div>

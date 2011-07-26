@@ -1,0 +1,30 @@
+<div id="header">
+	<div id="logo">
+		<h1><%= link_to "&nbsp;", '/admin' %></h1>
+	</div>
+
+	<% if session[:username] %>
+	    <div id="menu">
+		  <ul>
+	   		<li class="first">&nbsp;</li>
+				<li<%=" class=current_page_item" if @title=="Summary" %> > <%= link_to "Summary", '/admin'%></li>
+				<li<%=" class=current_page_item" if @title=="Management" %> > <%= link_to "Management", '/admin/management'%></li>
+				<li<%=" class=current_page_item" if @title=="Reports" %> > <%= link_to "Reports", '/admin/reports'%></li>
+				<li><%= link_to "Log out", '/admin/logout' %></li>
+		    </ul>
+	    </div>
+
+
+<div id="search" class="extform">
+		<% form_tag "/admin/search" do %>
+		<img src="/images/admin/Zoom-icon.png" height="16">
+		Search: <%= text_field_tag :search_string %>
+		<font class="button">
+		<%= submit_tag "Go" %></font>
+		<% end %>
+
+</div>
+        <% end %>
+</div>
+
+<div style="clear: both;">&nbsp;</div>

@@ -1,0 +1,23 @@
+<h1>
+<%=h@subscriber.complete_name%><font size=2>&nbsp;[<%= link_to "Edit", edit_admin_subscriber_path(@subscriber) %>]</font></h1>
+
+<div class="post">
+<table id="shows" align="center">
+
+<tr><td width="120">Name: </td>
+<td><%=h @subscriber.last_name %>, <%=h @subscriber.first_name %></td>
+</tr>
+<tr><td>Contact No.: </td>
+<td><%=h @subscriber.contact_no %></td>
+</tr>
+<tr><td>E-mail Address:</td>
+<td><b><%=h @subscriber.email %></b></td>
+<tr>
+<td>Status: </td>
+<td><%=h @subscriber.status %></td>
+</tr>
+</tr>
+</table>
+</div>
+
+

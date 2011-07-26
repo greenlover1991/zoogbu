@@ -1,0 +1,19 @@
+<table border="2" align="center" >
+<tr class="table_head"><td><b><%= link_to "ID", "/admin/subscriber/page/#{@current_page}/sort/id" %></b></td>
+    <td><b><%= link_to "SUBSCRIBER", "/admin/subscriber/page/#{@current_page}/sort/last_name" %></b></td>
+	<td><b><%= link_to "STATUS", "/admin/subscriber/page/#{@current_page}/sort/status" %></b></td>
+    <td><b>OPERATIONS</b></td>
+</tr>
+<% @subscribers.each do |sub| %>
+<tr>
+<td><%= sub.id %></td>
+<td><%=h sub.last_name %>, <%=h sub.first_name %>
+<td><%=h sub.status %></td>
+<td>	<%= link_to "Edit", edit_admin_subscriber_path(sub) %>
+         <%= link_to "Delete", admin_subscriber_path(sub), :confirm=>"Are you sure?",:method=>'delete' %>
+</td>
+</tr>
+  <% end %>
+</table>
+
+

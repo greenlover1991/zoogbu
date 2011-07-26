@@ -1,0 +1,26 @@
+<h1>
+<%=h@zoomap.name%><font size=2>&nbsp;[<%= link_to "Edit", edit_admin_zoomap_path(@zoomap) %>]</font></h1>
+
+<div class="post">
+<table id="shows" align="center">
+<tr>
+	<td colspan="2">
+		<img src="<%= @zoomap.img_url%>" alt="<%=@zoomap.img_description%>"  width="980"; height=612 usemap="#<%= @zoomap.name%>"/>
+		<map name=<%= @zoomap.name %> id=<%= @zoomap.name%>>
+			<% @zoomap.map_areas.each do |ma| %>
+				<area shape="rect" coords="<%= "#{ma.x1},#{ma.y1},#{ma.x2}, #{ma.y2}"%>" href="<%= admin_habitat_path(ma.habitat) %>" />
+			<% end %>
+		</map>
+	</td>
+<tr>
+
+<tr><td width="200">Zoomap Name: </td>
+<td><%=h @zoomap.name %></td>
+</tr>
+
+<tr>
+<td colspan="2"><%=h @zoomap.description %></td>
+</tr>
+</table>
+
+</div>

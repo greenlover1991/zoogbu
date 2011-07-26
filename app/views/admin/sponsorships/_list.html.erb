@@ -1,0 +1,18 @@
+<table border="2" align="center" >
+<tr class="table_head"><td><b><%= link_to "ID", "/admin/sponsorship/page/#{@current_page}/sort/id" %></b></td>
+    <td><b>SPONSOR</b></td>
+    <td><b>ANIMAL</b></td>
+    <td><b>OPERATIONS</b></td>
+</tr>
+<% @sponsorships.each do |p| %>
+<tr>
+<td><%= p.id %></td>
+<td><%= p.sponsor.name %> </td>
+<td><%= p.animal.name %> </td>
+<td>	<%= link_to "Show", admin_sponsorship_path(p) %>
+	 <%= link_to "Edit", edit_admin_sponsorship_path(p) %>
+         <%= link_to "Delete", admin_sponsorship_path(p), :confirm=>"Are you sure?",:method=>'delete' %>
+</td>
+</tr>
+  <% end %>
+</table>

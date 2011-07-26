@@ -1,0 +1,17 @@
+<h1>
+<%=h @sponsorship.sponsor.name%> - <%=h @sponsorship.animal.name%><font size=2>&nbsp;[<%= link_to "Edit", edit_admin_sponsorship_path(@sponsorship) %>]</font></h1>
+
+<div class="post">
+<table id="shows" align="center">
+
+<tr><td width="120">Sponsor Date: </td>
+<td><%= @sponsorship.sponsor_date.strftime("%B %d, %Y, %A") %></td>
+</tr>
+<tr><td>Animal Sponsored: </td>
+<td><%= link_to @sponsorship.animal.name, admin_animal_path(@sponsorship.animal) %></td>
+</tr>
+<tr><td>Sponsor:</td>
+<td><%= link_to @sponsorship.sponsor.name, admin_sponsor_path(@sponsorship.sponsor)%></td>
+</tr>
+</table>
+</div>

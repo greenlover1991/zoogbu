@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  food: 
+  maintenance: 
+  qty_used: 1
+
+two:
+  food: 
+  maintenance: 
+  qty_used: 1

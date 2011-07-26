@@ -1,0 +1,52 @@
+<h1>
+<%=h@habitat.name%><font size=2>&nbsp;[<%= link_to "Edit", edit_admin_habitat_path(@habitat) %>]</font></h1>
+
+<div class="post">
+<table id="shows" align="center">
+<tr>
+	<td rowspan="7" width="400" height="300" align="center">
+
+<% if @habitat.img_url.blank?%>
+	<img src="/images/data/noimage.jpg" alt="NO IMAGE AVAILABLE" width="400"; height=auto; />
+<% else %>
+	<img src="<%= @habitat.img_url%>" alt="<%=h@habitat.img_description%>"  width="400"; height=auto />
+<% end %>
+
+	</td>
+<tr>
+
+<tr><td width="150">Habitat: </td>
+<td><%=h @habitat.name %></td>
+</tr>
+
+<tr><td>Habitat Type: </td> 
+<td><%= link_to h(@habitat.habitat_type.name), admin_habitat_type_path(@habitat.habitat_type) %></td>
+</tr>
+
+<tr><td>Number of Occupants: </td> 
+<td><%=h @habitat.animals_count %></td>
+</tr>
+<tr><td>Max Occupants: </td> 
+<td><%=h @habitat.max_occupants %></td>
+</tr>
+<tr>
+<td colspan="3"><%=h @habitat.description %></td>
+</tr>
+<tr>
+<td colspan="6">
+<ul>
+<h2>Occupying animals:</h2>
+<% @habitat.animals.sort_by{|a| a.name }.each do |a|%>
+	<li>
+		<%= link_to h(a.name), admin_animal_path(a) %>
+	</li>
+<% end%>
+</ul>
+</td>
+</tr>
+
+
+
+</table>
+
+</div>

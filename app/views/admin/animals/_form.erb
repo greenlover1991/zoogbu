@@ -1,0 +1,161 @@
+<%= f.error_messages %>
+
+<script type=text/javascript>
+	function setHidden(elem)
+	{
+		document.getElementById(elem).style.visibility = "hidden";
+	}
+	
+	function setVisible(elem)
+	{
+		document.getElementById(elem).style.visibility = "visible";
+	}
+</script>
+<p>
+<%= f.label "Name:" %><br/>
+<%= f.text_field :name %>
+</p>
+
+
+<p>
+<%= f.label "Image URL:" %><br/>
+<%= f.file_field :img_upload %>
+</p>
+
+<p>
+<%= f.label "Image Description:" %><br/>
+<%= f.text_area :img_description %>
+</p>
+
+<h3>Taxonomy</h3>
+
+<p>
+<%= f.label "Kingdom:" %><br/> 
+<%= f.collection_select :kingdom_id, Kingdom.find(:all, :order=>"name"), :id, :name, :prompt =>"Select a Kingdom"%>
+<a onclick="setVisible('kingdom_field');"><img src="/images/admin/Add-icon.png" width=20 height=20 style="cursor:pointer" /></a>
+<span id=kingdom_field style="visibility:hidden;"> or create a new one: <%= f.text_field :new_kingdom %> 
+	<a onclick="setHidden('kingdom_field');"><img src="/images/admin/Delete-icon.png" width=20 height=20 style="cursor:pointer" /></a>
+</span><br/>
+
+
+<%= f.label "Phylum:" %><br/> 
+<%= f.collection_select :phylum_id, Phylum.find(:all, :order=>"name"), :id, :name, :prompt =>"Select a Phylum"%>
+<a onclick="setVisible('phylum_field');"><img src="/images/admin/Add-icon.png" width=20 height=20 style="cursor:pointer" /></a>
+<span id=phylum_field style="visibility:hidden;"> or create a new one: <%= f.text_field :new_phylum %> 
+	<a onclick="setHidden('phylum_field');"><img src="/images/admin/Delete-icon.png" width=20 height=20 style="cursor:pointer" /></a>
+</span><br/>
+
+<%= f.label "Class:" %><br/> 
+<%= f.collection_select :aclass_id, Aclass.find(:all, :order=>"name"), :id, :name, :prompt =>"Select a Class"%>
+<a onclick="setVisible('aclass_field');"><img src="/images/admin/Add-icon.png" width=20 height=20 style="cursor:pointer" /></a>
+<span id=aclass_field style="visibility:hidden;"> or create a new one: <%= f.text_field :new_aclass %> 
+	<a onclick="setHidden('aclass_field');"><img src="/images/admin/Delete-icon.png" width=20 height=20 style="cursor:pointer" /></a>
+</span><br/>
+
+<%= f.label "Order:" %><br/> 
+<%= f.collection_select :aorder_id, Aorder.find(:all, :order=>"name"), :id, :name, :prompt =>"Select a Order"%>
+<a onclick="setVisible('aorder_field');"><img src="/images/admin/Add-icon.png" width=20 height=20 style="cursor:pointer" /></a>
+<span id=aorder_field style="visibility:hidden;"> or create a new one: <%= f.text_field :new_aorder %> 
+	<a onclick="setHidden('aorder_field');"><img src="/images/admin/Delete-icon.png" width=20 height=20 style="cursor:pointer" /></a>
+</span><br/>
+
+<%= f.label "Family:" %><br/> 
+<%= f.collection_select :family_id, Family.find(:all, :order=>"name"), :id, :name, :prompt =>"Select a Family"%>
+<a onclick="setVisible('family_field');"><img src="/images/admin/Add-icon.png" width=20 height=20 style="cursor:pointer" /></a>
+<span id=family_field style="visibility:hidden;"> or create a new one: <%= f.text_field :new_family %> 
+	<a onclick="setHidden('family_field');"><img src="/images/admin/Delete-icon.png" width=20 height=20 style="cursor:pointer" /></a>
+</span><br/>
+
+<%= f.label "Genus:" %><br/> 
+<%= f.collection_select :genus_id, Genus.find(:all, :order=>"name"), :id, :name, :prompt =>"Select a Genus"%>
+<a onclick="setVisible('genus_field');"><img src="/images/admin/Add-icon.png" width=20 height=20 style="cursor:pointer" /></a>
+<span id=genus_field style="visibility:hidden;"> or create a new one: <%= f.text_field :new_genus %> 
+	<a onclick="setHidden('genus_field');"><img src="/images/admin/Delete-icon.png" width=20 height=20 style="cursor:pointer" /></a>
+</span><br/>
+
+
+<%= f.label "Species:" %><br/> 
+<%= f.collection_select :species_id, Species.find(:all, :order=>"name"), :id, :name, :prompt =>"Select a Species"%>
+<a onclick="setVisible('species_field');"><img src="/images/admin/Add-icon.png" width=20 height=20 style="cursor:pointer" /></a>
+<span id=species_field style="visibility:hidden;"> or create a new one: <%= f.text_field :new_species %> 
+	<a onclick="setHidden('species_field');"><img src="/images/admin/Delete-icon.png" width=20 height=20 style="cursor:pointer" /></a>
+</span><br/>
+</p>
+
+
+<p>
+<%= f.label "Habitat:" %><br/> 
+<%= f.collection_select :habitat_id, Habitat.find(:all, :order=>"name"), :id, :name, :prompt =>"Select a habitat"%>
+</p>
+
+
+
+<p>
+<%= f.label "Birthdate:" %><br/>
+<%= f.date_select :birthdate, :start_year => Time.now.year - 100, :end_year => Time.now.year %>
+</p>
+
+
+<p>
+<%= f.label "Gender:" %><br/> 
+<%= f.radio_button(:gender, "Male") %>
+<%= f.label :gender_male, "Male" %><br/> 
+<%= f.radio_button(:gender, "Female") %>
+<%= f.label :gender_female, "Female" %><br/> 
+</p>
+
+
+<p>
+<%= f.label "Value:" %><br/> 
+<%= f.text_field :value %>
+</p>
+
+
+<p>
+<%= f.label "Motto:" %><br/> 
+<%= f.text_field :motto %>
+</p>
+
+
+<p>
+<%= f.label "Acquisition:" %><br/> 
+<%= f.text_field :acquisition %>
+</p>
+
+<p>
+<%= f.label "Height:" %><br/> 
+<%= f.text_field :height %>
+</p>
+
+<p>
+<%= f.label "Weight:" %><br/> 
+<%= f.text_field :weight %>
+</p>
+
+
+<p>
+<%= f.label "Description:" %><br/> 
+<%= f.text_area :description %>
+</p>
+
+
+<p> 
+<h2> Statuses: </h2> 
+<ul>
+<% Status.find(:all, :order=>"name").each do |st|%>
+   <li>
+		<%= check_box_tag "animal[status_ids][]", st.id, @animal.statuses.include?(st) %>
+		<%= st.name %>
+   </li>
+<% end %>
+</ul>
+</p>
+
+
+
+
+
+
+<p>
+<%= f.submit button%>
+</p>

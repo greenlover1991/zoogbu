@@ -1,0 +1,25 @@
+<%= f.error_messages %>
+
+<p>
+<%= f.label "Animal:" %></br> 
+<%= f.collection_select :animal_id, Animal.find_by_sql("SELECT ANIMALS.* FROM ANIMALS LEFT OUTER JOIN SPONSORSHIPS ON ANIMALS.ID = SPONSORSHIPS.ANIMAL_ID WHERE SPONSOR_ID IS NULL ORDER BY ANIMALS.NAME") , :id, :name, :prompt =>"Select an animal" %>
+</p>
+
+
+<p>
+<%= f.label "Sponsor:" %></br> 
+<%= f.collection_select :sponsor_id, Sponsor.find(:all, :conditions=> "status = 'Active'"), :id, :name, :prompt =>"Select a sponsor" %>
+</p>
+
+
+
+
+<p>
+<%= f.label "Sponsor date:" %></br> 
+<%= f.date_select :sponsor_date %>
+</p>
+
+
+<p>
+<%= f.submit button%>
+</p>

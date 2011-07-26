@@ -1,0 +1,25 @@
+	<div id="main" class="wide">			
+		<div id="mainNav" class="nav">
+			<ul>
+				<li><%= link_to_function  "Sponsor Or Adopt" do |page|
+					page.replace_html  :form, :partial=>'client_form'
+					end %>
+				</li>
+
+				<li><%= link_to_function "Mailing List" do |page| 
+					page.replace_html :form, :partial=>'subscriber_form'
+					end %>
+				</li>
+				
+				<li><%= link_to_function "Post a review" do |page| 
+					page.replace_html :form, :partial=>'post_form'
+					end %>
+				</li>
+
+			</ul>
+		</div>	
+		
+		<div id="form">				
+			<%= render :partial=>'subscriber_form'%>
+		</div>
+	</div>

@@ -1,0 +1,68 @@
+<h1><img src="/images/admin/Reports-icon.png" width=auto height="50";>Zoogbu Report</h1>
+
+<div class="post">
+<table id="shows" align="center">
+	<tr class="table_caption"><td colspan=2>ANIMAL REPORTS</td></tr>
+	<tr><td width="250">Average Annual Growth Rate</td>
+	<td><%= sprintf("%.2f",@average_annual_growth * 100) %>% <%= "[#{@starting_year} - #{Time.now.year}]" %></td>
+</tr>
+<tr><td><b>Total Number of Animals</b></td>
+	<td><%= link_to @no_animals, admin_animals_path %></td>
+</tr>
+</table>
+<br>
+
+<table id="shows" align="center">
+	<tr class="table_caption"><td colspan=2>EMPLOYEE REPORTS</td></tr>
+	<tr><td>Administrators</td>
+	<td><%= @no_admins %></td>
+	</tr>
+	<tr><td>Trainers</td>
+	<td><%= @no_trainers %></td>
+	</tr>
+	<tr><td>Zookeepers</td>
+	<td><%= @no_zookeepers %></td>
+	</tr>
+	<tr><td>Other Employees</td>
+	<td><%= @no_other_employees %></td>
+	<tr><td width="250"><b>Total Number of Employees</b></td>
+	<td><%= link_to @no_employees, admin_employees_path %></td>
+	</tr>
+</table>
+<br>
+
+<table id="shows" align="center">
+	<tr class="table_caption"><td colspan=2>EVENT REPORTS</td></tr>
+
+	<tr><td width="250"><b>Total Number of Events</b></td>
+	<td><%= link_to @no_events, admin_events_path %></td>
+	</tr>
+	
+	<tr><td width="250"><b>Accumulated Number of Visitors</b></td>
+	<td><%= @total_visits%></td>
+	</tr>
+
+	<tr><td>Average Number of Performances</td>
+	<td><%= link_to @average_performances, admin_performances_path %></td>
+	</tr>
+</table>
+<br>
+
+<table id="shows" align="center">
+<tr class="table_caption"><td colspan=2>OTHER REPORTS</td></tr>
+<tr><td width="250">Active Subscribers</td>
+<td><%= @no_active_subs %></td>
+<tr><td width="250">Cancelled Subscribers</td>
+<td><%= @no_cancelled_subs %></td>
+<tr><td width="250">Pending Subscribers</td>
+<td><%= @no_pending_subs %></td>
+<tr><td width="250"><b>Total Number of Subscribers</b></td>
+<td><%= link_to @no_subs, admin_subscribers_path %></td>
+<tr><td width="250">Active Posts</td>
+<td><%= @no_active_posts %></td>
+<tr><td width="250"><b>Total Number of Posts</b></td>
+<td><%= link_to @no_posts, admin_posts_path %></td>
+</tr>
+</table>
+
+</div>

@@ -1,0 +1,15 @@
+<% for comment in comments %>	
+	<table>
+		<tr>
+			<td>
+				<div id="comments">
+				<% if comment.status == "Active" %>
+				<p><%= comment.author %> : <%= comment.body %> </p>
+				<% end %>
+				</div>
+			</td>
+		</tr>
+	</table>
+
+				
+<% end %>

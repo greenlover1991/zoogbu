@@ -1,0 +1,33 @@
+<h1>
+<%=h @adoption.buyer.name%> - <%=h @adoption.animal.name%><font size=2>&nbsp;[<%= link_to "Edit", edit_admin_adoption_path(@adoption) %>]</font></h1>
+
+<div class="post">
+<table id="shows" align="center">
+
+<tr>
+<td width="125">Adoption date:</td>
+<td><%= @adoption.purchase_date.strftime("%B %d, %Y, %A") %></td>
+</tr>
+
+<tr><td>Delivery address: </td>
+<td><%=h @adoption.delivery_address%></td>
+</tr>
+
+
+<tr>
+<td>Payment mode: </td> 
+<td><%=h @adoption.payment_mode%></td>
+</tr>
+
+
+<tr><td>Animal: </td> 
+<td><%= link_to h(@adoption.animal.name), admin_animal_path(@adoption.animal) %></td>
+</tr>
+
+
+<tr><td>Buyer:</td>
+<td><%= link_to h(@adoption.buyer.name), admin_buyer_path(@adoption.buyer) %></td>
+</tr>
+
+</table>
+</div>

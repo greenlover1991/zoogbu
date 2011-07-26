@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  animal_id: 1
+  buyer_id: 1
+  purchase_date: 2011-07-21
+  delivery_address: MyString
+  payment_mode: MyString
+
+two:
+  animal_id: 1
+  buyer_id: 1
+  purchase_date: 2011-07-21
+  delivery_address: MyString
+  payment_mode: MyString

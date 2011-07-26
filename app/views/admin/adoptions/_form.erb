@@ -1,0 +1,38 @@
+<%= f.error_messages %>
+
+<p>
+<%= f.label "Animal:" %></br> 
+<%= f.collection_select :animal_id, Animal.find_by_sql("SELECT ANIMALS.* FROM ANIMALS LEFT OUTER JOIN ADOPTIONS ON ANIMALS.ID = ADOPTIONS.ANIMAL_ID WHERE BUYER_ID IS NULL ORDER BY ANIMALS.NAME") , :id, :name, :prompt =>"Select an animal" %>
+</p>
+
+
+<p>
+<%= f.label "Buyer:" %></br> 
+<%= f.collection_select :buyer_id, Buyer.find(:all, :conditions=> "status = 'Active'"), :id, :name, :prompt =>"Select a buyer" %>
+</p>
+
+
+
+
+<p>
+<%= f.label "Purchase date:" %></br> 
+<%= f.date_select :purchase_date %>
+</p>
+
+
+<p>
+<%= f.label "Delivery address:" %></br>
+<%= f.text_area :delivery_address %>
+</p>
+
+
+<p>
+<%= f.label "Payment mode:" %></br>
+<%= f.radio_button(:payment_mode, "Zookeeper") %> <%= f.label "Cash" %></br> 
+<%= f.radio_button(:payment_mode, "Trainer") %> <%= f.label "Check" %></br>
+</p>
+
+<p>
+<%= f.submit button%>
+</p>
+

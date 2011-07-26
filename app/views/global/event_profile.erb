@@ -1,0 +1,41 @@
+<div id="main" class="wide">
+	<div id="profile">
+		<table>
+			<tr>
+				<td rowspan="2">
+					<div id="profile_img">
+						<img src="<%= @event.img_url %>" width="95%" />
+						<h4><i><%= @event.img_description %></i></h4>
+					</div>
+				</td>
+				<td>
+					<div id="event_profile">
+						<h3><%=h @event.name %></h3>
+						<h2><%=h @event.description %></h2>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table>
+						<tr>
+							<th> Join Us On: </th>
+						</tr>
+						<tr>
+							<% for p in @performances.sort_by{|p| p.event_date} %>
+								<tr>
+									<td>
+										<p><b><%= p.event_date.strftime("%B %d, %Y, %A") %></b></p>
+										<p>Start: <b><%= p.event_start.strftime("%I : %M %p") %></b><br/>
+										End: <b><%= p.event_end.strftime("%I : %M %p") %> </b></p>
+									</td>
+								</tr>
+							<% end %>
+						</tr>
+					</table>
+				</td>
+					</div>		
+			</tr>
+		</table>
+
+	</div>
+</div>

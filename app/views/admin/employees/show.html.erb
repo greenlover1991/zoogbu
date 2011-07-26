@@ -1,0 +1,79 @@
+
+<h1>
+<%=h @employee.complete_name%> - <%=h @employee.employee_type %><font size=2>&nbsp;[<%= link_to "Edit", edit_admin_employee_path(@employee) %>]</font></h1>
+
+<div class="post">
+<table id="shows" align="center">
+<tr>
+	<td rowspan="9" width="400" height="300" align="center">
+
+
+<% if @employee.img_url.blank?%>
+	<img src="/images/data/noimage.jpg" alt="NO IMAGE AVAILABLE" width="400"; height=auto; />
+<% else %>
+	<img src="<%= @employee.img_url%>" alt="<%=@employee.complete_name%>"  width="400"; height=auto />
+<% end %>
+
+	</td>
+	<tr>
+	<td width="110">First Name: </td>
+	<td><%=h @employee.first_name %>
+	</td></tr>
+	<tr><td>Middle Name: </td><td>
+		<%=h @employee.middle_name %>
+	</td></tr>
+	<tr><td>Last Name: </td><td>
+		<%=h @employee.last_name %>
+	</td></tr>
+	<tr><td>Birthdate:</td>
+	<td><%= @employee.birthdate.strftime("%B %d, %Y, %A") %></td>
+	</tr></td>
+
+	<tr><td>Gender: </td>
+	<td><%= @employee.gender %></td>
+	</tr></td>
+
+	<tr><td>Date Employed: </td>
+	<td><%= @employee.date_employed %></td>
+	</tr></td>
+	
+	<tr><td>Years Employed: </td>
+	<td><%= @employee.years_employed %></td>
+	</tr></td>
+
+	<tr><td>Salary: </td>
+	<td><%= @employee.salary %></td>
+	</tr></td>
+
+</tr>
+</table>
+
+<h2>Contact Details</h2>
+
+<table id="shows" align="center">
+<tr>
+<td width="110">Address: </td> 
+<td><%=h @employee.address %></td>
+</tr>
+
+<tr>
+<td>Telephone No. : </td> 
+<td><%=h @employee.tel_no %></td>
+</tr>
+
+<tr>
+<td>Mobile No. : </td> 
+<td><%=h @employee.mob_no %></td>
+</tr>
+</table>
+
+<%= render :partial=> 'skills', :locals => {:employee => @employee} %>
+
+<% if @employee.employee_type.eql?("Zookeeper") %>
+  <%= render :partial=> 'maintenances', :locals => {:employee => @employee} %>
+<%end%>
+<% if @employee.employee_type.eql?("Trainer") %>
+  <%= render :partial=> 'events', :locals => {:employee => @employee} %>
+<% end %>
+
+</div>

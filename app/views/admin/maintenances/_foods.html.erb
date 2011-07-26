@@ -1,0 +1,6 @@
+<h2>Foods used:</h2>
+<ul>
+   <% maintenance.consumptions.each do |con| %>
+   <li><%= con.food.name %> | <%= con.qty_used %> unit/s</li>
+   <% end %>
+</ul>

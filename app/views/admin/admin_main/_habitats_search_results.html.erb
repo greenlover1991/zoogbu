@@ -1,0 +1,17 @@
+	<table id="search_table" align="center">
+		<tr class="table_caption"><td colspan=3>HABITATS SEARCH RESULTS</td></tr>
+		<tr class="table_head">
+			<td>Habitat Name</td>
+			<td>Habitat Type</td>
+			<td>Description</td>
+		</tr>
+		
+	<% for h in @habitats %> 	
+		<tr>
+			<td> <%= link_to h.name, admin_habitat_path(h) %> </td>
+			<td> <%= link_to h.habitat_type.name, admin_habitat_type_path(h.habitat_type) %> </td>
+			<td> <%= h.description %> </td>
+		</tr>
+	<% end %>
+	
+</table>

@@ -1,0 +1,7 @@
+<h1>Edit Skill</h1>
+
+<% form_for @skill, :url=>admin_skill_path(@skill) do |f| %>
+  <%= render :partial=>'form', :locals=>{:f=>f,:button=>'Update'}%>
+<% end %>
+
+

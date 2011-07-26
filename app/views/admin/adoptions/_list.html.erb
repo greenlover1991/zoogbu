@@ -1,0 +1,20 @@
+
+<table border="2" align="center" >
+<tr class="table_head"><td><b><%= link_to "ID", "/admin/adoption/page/#{@current_page}/sort/id" %></b></td>
+    <td><b>ANIMAL NAME</b></td>
+    <td><b>BUYER NAME</b></td>
+    <td><b>OPERATIONS</b></td>
+</tr>
+<% @adoptions.each do |a| %>
+<tr>
+<td><%=a.id %></td>
+<td><%= a.buyer.name %></td>
+<td><%= a.animal.name %> </td>
+<td>	<%= link_to "Show", admin_adoption_path(a) %>
+	<%= link_to "Edit", edit_admin_adoption_path(a) %>
+	<%= link_to "Delete", admin_adoption_path(a), :confirm=>"Are you sure?",:method=>'delete' %>
+</td>
+</tr>
+  <% end %>
+</table>
+

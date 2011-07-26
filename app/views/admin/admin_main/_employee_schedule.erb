@@ -1,0 +1,23 @@
+<% if session[:employee_type] == "Trainer" %>
+	<br/><h2>Assigned events:</h2>
+	<ul>
+	<% @events.each do |event| %>
+		
+		<li> <%= link_to h(event.name), admin_event_path(event) %></li>
+		<ul>
+		<% event.performances.sort_by{|p|p.event_date}.each do |perform| %>
+			<li><%= perform.event_date.strftime("%B %d, %Y, %A") %> | <%= perform.event_start.strftime("%I : %M %p")%> - <%= perform.event_end.strftime("%I : %M %p") %></li>
+		<% end %>
+		</ul>
+	<% end %>
+	</ul>
+<% elsif session[:employee_type] == "Zookeeper" %>
+	<br/><h2>Assigned maintenances:</h2>
+	<ul>
+	<% @maintenances.sort_by{|m| m.maintenance_date}.each do |m| %>
+		<li>
+			<p> <%= link_to h(m.habitat.name), admin_maintenance_path(m) %> | <%= m.maintenance_date.strftime("%B %d, %Y, %A") %> | <%= m.maintenance_time.strftime(" %I:%M%p") %></p>
+		</li>
+	<% end %>
+	</ul>
+<% end %>

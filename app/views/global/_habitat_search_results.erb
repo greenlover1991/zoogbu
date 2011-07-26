@@ -1,0 +1,16 @@
+<h1> Where You At Habitat? </h1>
+	<table>
+		<tr>
+			<th> Name</th>
+			<th> Type</th>
+		</tr>
+		
+	<% for habitat in @habitats %> 	
+		<tr>
+			<th> <%= link_to habitat.name, "/zoogle/habitat_profile/#{habitat.id}" %> </th>
+			<th> <%= habitat.habitat_type.name %> </th>
+
+		</tr>
+		
+	<% end %>
+	</table>

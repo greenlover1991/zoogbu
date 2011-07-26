@@ -1,0 +1,14 @@
+			<div id=sidebar>
+				<div id=nav>
+					<ul>
+						<li><%= link_to_function  "Sponsor Or Adopt" do |page|
+								page.replace_html  :form, :partial=>'client_form'
+							end %>
+						</li>
+						<li><%= link_to_function "Mailing List" do |page| 
+								page.replace_html :form, :partial=>'subscriber_form'
+							end %>
+						</li>
+					</ul>
+				</div>				
+			</div>

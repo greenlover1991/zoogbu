@@ -1,0 +1,6 @@
+<h2>Animals participating:</h2>
+<ul>
+   <% event.animals.each do |a| %>
+   <li><%= link_to a.name, admin_animal_path(a) %></li>
+   <% end %>
+</ul>

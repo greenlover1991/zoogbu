@@ -1,0 +1,19 @@
+<table border="2" align="center" >
+<tr class="table_head"><td><b><%= link_to "ID", "/admin/event/page/#{@current_page}/sort/id" %></b></td>
+    <td><b><%= link_to "NAME", "/admin/event/page/#{@current_page}/sort/name" %></b></td>
+    <td><b>HABITAT</b></td>
+    <td><b>OPERATIONS</b></td>
+</tr>
+<% @events.each do |e| %>
+<tr>
+<td><%=e.id %></td>
+<td><%= e.name%></td>
+<td><%=e.habitat.name %></td>
+<td>	<%= link_to "Show", admin_event_path(e) %>
+	<%= link_to "Edit", edit_admin_event_path(e) %>
+	<%= link_to "Delete", admin_event_path(e), :confirm=>"Are you sure?",:method=>'delete' %>
+</td>
+</tr>
+  <% end %>
+</table>
+

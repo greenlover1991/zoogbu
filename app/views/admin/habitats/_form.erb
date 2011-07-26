@@ -1,0 +1,55 @@
+<%= f.error_messages %>
+
+<script type=text/javascript>
+	function setHidden(elem)
+	{
+		document.getElementById(elem).style.visibility = "hidden";
+	}
+	
+	function setVisible(elem)
+	{
+		document.getElementById(elem).style.visibility = "visible";
+	}
+</script>
+
+<p>
+<%= f.label "Name:" %></br>
+<%= f.text_field :name %>
+</p>
+
+<p>
+<%= f.label "Image URL:" %></br>
+<%= f.file_field :img_upload %>
+</p>
+
+<p>
+<%= f.label "Image Description:" %></br>
+<%= f.text_area :img_description %>
+</p>
+
+
+<p>
+<%= f.label "Habitat Type:" %></br> 
+<%= f.collection_select :habitat_type_id, HabitatType.find(:all), :id, :name, :prompt =>"Select a Habitat Type"%>
+<a onclick="setVisible('habitat_type_field');"><img src="/images/admin/Add-icon.png" width=20 height=20 style="cursor:pointer"/></a>
+<span id=habitat_type_field style="visibility:hidden;"> or create a new one: <%= f.text_field :new_habitat_type %> 
+	<a onclick="setHidden('habitat_type_field');"><img src="/images/admin/Delete-icon.png" width=20 height=20 style="cursor:pointer"></a>
+</span><br/>
+</p>
+</p>
+
+
+
+<p>
+<%= f.label "Max Occupants:" %></br> 
+<%= f.text_field :max_occupants %>
+</p>
+
+<p>
+<%= f.label "Description:" %></br> 
+<%= f.text_area :description %>
+</p>
+
+<p>
+<%= f.submit button%>
+</p>

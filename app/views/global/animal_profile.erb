@@ -1,0 +1,50 @@
+<div id="main" class="wide">
+	<div id="profile">
+		<table>
+			<tr>
+				<td width="297px">
+					<div id="profile_img">
+						<img src="<%= @animal.img_url %>" width="95%" />
+						<h4><i><%= @animal.img_description %></i></h4>
+					</div>
+				</td>
+				<td rowspan="2" valign="top">
+					<div id="about_me">
+						<h2><%= @animal.description %></h2><br />
+						<h2> I live in <%= link_to @animal.habitat.name, "/zoogle/habitat_profile/#{@animal.habitat.id}" %>.
+						Please visit my crib. </h2>
+					</div>		
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<div id="animal_profile" >
+						<p>Name: <b><%= @animal.name %></b></p>
+						<p>Birth Date: <b><%= @animal.birthdate.strftime("%B %d, %Y") %></b></p>
+						<p>Gender: <b><%= @animal.gender %></b></p>
+						<p>Height: <b><%= @animal.height %></b></p>
+						<p>Weight: <b><%= @animal.weight %></b></p>
+						<p>Motto: <b><%= @animal.motto %></b></p> <br /> <br /> <br />
+						<p>Kingdom: <b><%= @animal.kingdom.name %></b></p>
+						<p>Phylum: <b><%= @animal.phylum.name %></b></p>
+						<p>Class: <b><%= @animal.aclass.name %></b></p>
+						<p>Order: <b><%= @animal.aorder.name %></b></p>
+						<p>Family: <b><%= @animal.family.name %></b></p>
+						<p>Genus: <b><%= @animal.genus.name %></b></p>
+						<p>Species: <b><%= @animal.species.name %></b></p>
+					</div>
+				</td>
+				<td>
+					<div id="related_links">
+						<% for animal in @related %>
+							<p><b><%= link_to animal.name,
+							 "/zoogle/animal_profile/#{animal.id}" %></b><p>
+						<% end %>					
+					</div>
+				</td>
+			</tr>
+		</table>
+
+	</div>
+</div>

@@ -1,0 +1,45 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  birthdate: 2011-07-21
+  gender: MyString
+  height: 1.5
+  weight: 1.5
+  age: 1
+  value: 1.5
+  motto: MyString
+  acquisition: MyString
+  img_url: MyString
+  img_description: MyText
+  kingdom: 
+  phylum: 
+  aclass: 
+  aorder: 
+  family: 
+  genus: 
+  species: 
+  habitat: 
+  description: MyText
+
+two:
+  name: MyString
+  birthdate: 2011-07-21
+  gender: MyString
+  height: 1.5
+  weight: 1.5
+  age: 1
+  value: 1.5
+  motto: MyString
+  acquisition: MyString
+  img_url: MyString
+  img_description: MyText
+  kingdom: 
+  phylum: 
+  aclass: 
+  aorder: 
+  family: 
+  genus: 
+  species: 
+  habitat: 
+  description: MyText

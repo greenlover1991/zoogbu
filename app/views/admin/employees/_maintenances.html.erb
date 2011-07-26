@@ -1,0 +1,6 @@
+<h2>Assigned Maintenances:</h2>
+<ul>
+   <% employee.maintenances.each do |m| %>
+   <li><%= m.habitat.name %> - <%= m.maintenance_date %> <%= m.maintenance_time %></li>
+   <% end %>
+</ul>

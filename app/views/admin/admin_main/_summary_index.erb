@@ -1,0 +1,22 @@
+<h1>
+<% if @user_img_url.blank?%>
+	<img src="/images/admin/Administrator-icon.png" alt="NO IMAGE AVAILABLE" width=auto height="50"; />
+<% else %>
+	<img src="<%= @user_img_url %>" height="50" width="auto";/>
+<% end %>
+Welcome <%= "[#{session[:employee_type]}] #{session[:username]}" %>!</h1>
+
+<div class="post">
+	<% if @user %>
+		<table id="shows" align="center">
+		<tr><td width="150px">Name:</td><td> <%=h @user.employee.complete_name %></td></tr>
+		<tr><td>Address:</td><td> <%=h @user.employee.address %></td></tr>
+		<tr><td>Telephone No.:</td><td> <%=h @user.employee.tel_no %></td></tr>
+		<tr><td>Mobile No.:</td><td> <%=h @user.employee.mob_no %></td></tr>
+		<tr><td>Birthdate:</td><td> <%= @user.employee.birthdate.strftime("%B %d, %Y, %A")%></td></tr>
+		<tr><td>Date Employed:</td><td> <%= @user.employee.date_employed.strftime("%B %d, %Y, %A")%></td></tr>
+		<tr><td>Salary:</td><td> <%=h @user.employee.salary %></td></tr>
+		</table>
+		<%= render :partial => 'employee_schedule' %>
+	<% end %>
+</div>

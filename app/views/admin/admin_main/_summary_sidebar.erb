@@ -1,0 +1,142 @@
+<% controller_name = params[:controller]%>
+
+<div id="sidebar">
+	<ul id="MenuBar1" class="MenuBarVertical">
+	<% unless @pregnant_animals.empty? && @injured_animals.empty? && @sponsored_animals.empty? && @new_animals.empty? && @bought_animals.empty?  %>
+            <li><h3><font size=3>Animal Notifications<font></h3></li>	
+				<% unless @pregnant_animals.empty? %>
+				<li><a><img src="/images/admin/baby-cot-icon.png" /><%= @pregnant_animals.size %> Pregnant</a>
+				  <ul>
+					<li><h3>Pregnant</h3></li>
+					<% @pregnant_animals.each do |a| %>
+					<li><%= link_to a.name, admin_animal_path(a) %> </li>
+					<% end %>
+				  </ul>
+				</li>
+				<%end%>
+				<% unless @injured_animals.empty? %>
+				<li><a><img src="/images/admin/plaster-icon.png" /><%= @injured_animals.size%> Injured</a>
+				  <ul>
+					<li><h3>Injured</h3></li>
+					<% @injured_animals.each do |a| %>
+					<li><%= link_to a.name, admin_animal_path(a) %> </li>
+					<% end %>
+				  </ul>
+				</li>
+				<%end%>
+				<% unless @new_animals.empty? %>
+				<li><a><img src="/images/admin/Add-icon.png" /><%= @new_animals.size%> New</a>
+				  <ul>
+					<li><h3>New</h3></li>
+					<% @new_animals.each do |a| %>
+					<li><%= link_to a.name, admin_animal_path(a) %> </li>
+					<% end %>
+				  </ul>
+				</li>
+				<%end%>
+				<% unless @bought_animals.empty? %>
+				<li><a class="MenuBarItemSubmenu" href="#" ><img src="/images/admin/cat-icon.png" /><%= @bought_animals.size%> Adopted</a>
+				  <ul>
+					<li><h3>Newly Bought</h3></li>
+					<% @bought_animals.each do |a| %>
+					<li><%= link_to a.name, admin_animal_path(a) %> </li>
+					<% end %>
+				  </ul>
+				</li>
+				<%end%>
+				<% unless @sponsored_animals.empty? %>
+				<li><a class="MenuBarItemSubmenu" href="#" ><img src="/images/admin/spons-Icon.png" /><%= @sponsored_animals.size%> Sponsored</a>
+				  <ul>
+					<li><h3>Newly Donated</h3></li>
+					<% @sponsored_animals.each do |a| %>
+					<li><%= link_to a.name, admin_animal_path(a) %> </li>
+					<% end %>
+				  </ul>
+				</li>
+				<%end%>
+	<%end%>
+	<br/>
+	
+	<% unless @new_employees.empty? && @bday_employees.empty?%>
+            <li><h3>Employee Updates</h3></li>			
+				<% unless @new_employees.empty? %>
+				<li><a><img src="/images/admin/Add-User-icon.png" /><%= @new_employees.size%> New</a>
+				  <ul>
+					<li><h3>New</h3></li>
+					<% @new_employees.each do |a| %>
+					<li><%= link_to a.complete_name, admin_employee_path(a) %> </li>
+					<% end %>
+				  </ul>
+				</li>
+				<%end%>
+				<% unless 	@bday_employees.empty? %>
+				<li><a><img src="/images/admin/Cake-icon.png" /><%= @bday_employees.size%> Birthday</a>
+				  <ul>
+					<li><h3>Celebrants</h3></li>
+					<% @bday_employees.each do |a| %>
+					<li><%= link_to a.complete_name, admin_employee_path(a) %> </li>
+					<% end %>
+				  </ul>
+				</li>
+			<% end %>
+	<%end%>
+		<br/>
+		
+		
+		<% unless @new_events.empty? && @upcoming_performances.empty? %>
+	        <li><h3>Event Updates</h3></li>			
+				<% unless @upcoming_performances.empty? %>
+				<li><a><img src="/images/admin/event_icon.png" /><%= @upcoming_performances.size%> Monthly Performances</a>
+				  <ul>
+					<li><h3>events</h3></li>
+					<% @upcoming_performances.each do |a| %>
+					<li><%= link_to a.event.name, admin_performance_path(a) %> </li>
+					<% end %>
+				  </ul>
+				</li>
+				<% end %>
+				
+			<% unless @new_events.empty? %>
+			<li><a><img src="/images/admin/event_icon.png" /><%= @new_events.size%> New</a>
+				  <ul>
+					<li><h3>New</h3></li>
+					<% @new_events.each do |a| %>
+					<li><%= link_to a.name, admin_event_path(a) %> </li>
+					<% end %>
+				  </ul>
+				</li>
+			<% end %>
+		<br/>
+		<% end %>
+
+	<% unless @pending_subscriptions.empty? && @active_posts.empty? && @new_comments.empty?%>	
+            <li><h3>OTHER Updates</h3></li>			
+				<% unless @pending_subscriptions.empty? %>
+				<li><%= link_to image_tag("/images/admin/Contract-icon.png")+@pending_subscriptions.size.to_s+" Pending Subscriptions", admin_subscribers_path %></li>
+				<% end %>
+				
+				<% unless @active_posts.empty? %>
+				<li><%= link_to image_tag("/images/admin/blog-post-edit-icon.png")+@active_posts.size.to_s+" Pending Posts", admin_posts_path %></li>
+				<% end %>
+				
+				<% unless @new_comments.empty? %>
+				<li>
+					<%= link_to image_tag("/images/admin/Text-Bubble-icon.png")+@new_comments.size.to_s+" New Comments", admin_comments_path %>
+					<ul>
+						<li><h3>New</h3></li>
+						<% @new_comments.each do |a| %>
+						<li><%= link_to a.post.title, admin_comment_path(a) %> </li>
+						<% end %>
+					</ul>
+			
+				</li>
+				<% end %>
+	<%end%>
+    <% if @pregnant_animals.empty? && @injured_animals.empty? && @sponsored_animals.empty? && @new_animals.empty? && @bought_animals.empty? && @pending_subscriptions.empty? && @active_posts.empty? && @new_comments.empty? && @new_events.empty? && @upcoming_performances.empty? &&  @new_employees.empty? && @bday_employees.empty?%>	
+	           <li><h3>NO UPDATES</h3></li>			
+				<li><a><img src="/images/admin/Delete-icon.png" /></a></li>
+	<%end%>
+	</ul>
+ 
+ </div>
+

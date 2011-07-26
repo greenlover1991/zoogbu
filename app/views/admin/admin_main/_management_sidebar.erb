@@ -1,0 +1,177 @@
+<% controller_name = params[:controller]%>
+
+<div id="sidebar">
+
+	<ul id="MenuBar1" class="MenuBarVertical">
+            <li><h3>Management</h3></li>
+   			<% if session[:employee_type] == "Zookeeper" || session[:employee_type] == "Administrator"%>
+
+				<li<%= " class=current_page_item" if controller_name=="admin/animals" %>><a class="MenuBarItemSubmenu" href="#"><img src="/images/admin/Mammooth-icon.png">Animals</a>
+					 <ul>
+						<li><%= link_to "Create Animals", new_admin_animal_path %> </li>
+						<li><%= link_to "Browse Animals", admin_animals_path %> </li>
+					 </ul>
+				</li>
+
+
+				<li<%= " class=current_page_item" if controller_name=="admin/statuses" %> ><a class="MenuBarItemSubmenu" href="#"><img src="/images/admin/syringe-icon.png">Statuses</a>
+					 <ul>
+						<li><%= link_to "Create Statuses", new_admin_status_path %> </li>
+						<li><%= link_to "Browse Statuses", admin_statuses_path %> </li>
+					 </ul>
+				</li>
+			
+			
+				<li<%= " class=current_page_item" if controller_name=="admin/maintenances" %> ><a href="#"><img src="/images/admin/equipment_icon.png">Maintenances</a>
+				  <ul>
+					<li><%= link_to "Create Maintenance", new_admin_maintenance_path %></li>
+					<li><%= link_to "Browse Maintenances", admin_maintenances_path %></li>
+				  </ul>
+				</li>
+
+
+				<li<%= " class=current_page_item" if controller_name=="admin/foods" %> ><a href="#"><img src="/images/admin/meat-icon.png">Foods</a>
+				  <ul>
+					<li><%= link_to "Create Foods", new_admin_food_path %></li>
+					<li><%= link_to "Browse Foods", admin_foods_path %></li>
+				  </ul>
+				</li>
+			
+			<% end %>
+
+			
+			<% if session[:employee_type] == "Trainer" || session[:employee_type] == "Administrator"%>
+				<li<%= " class=current_page_item" if controller_name=="admin/events" %> ><a href="#"><img src="/images/admin/event_icon.png">Events</a>
+				  <ul>
+					<li><%= link_to "Create Events", new_admin_event_path %></li>
+					<li><%= link_to "Browse Events", admin_events_path %></li>
+				  </ul>
+				</li>		 
+
+
+				<li<%= " class=current_page_item" if controller_name=="admin/performances" %> ><a href="#"><img src="/images/admin/Ringmaster-icon.png">Performances</a>
+				  <ul>
+					<li><%= link_to "Create Performances", new_admin_performance_path %></li>
+					<li><%= link_to "Browse Performances", admin_performances_path %></li>
+				  </ul>
+				</li>
+			<% end %>
+			
+			
+			
+				
+		    
+			
+			<% if session[:employee_type] == "Human Resource" || session[:employee_type] == "Administrator"%>
+				<li<%= " class=current_page_item" if controller_name=="admin/employees" %> ><a href="#"><img src="/images/admin/User-Preppy-Green-icon.png">Employees</a>
+				  <ul>
+					<li><%= link_to "Create Employees", new_admin_employee_path %></li>
+					<li><%= link_to "Browse Employees", admin_employees_path %></li>
+				  </ul>
+				</li>
+
+				
+				<li<%= " class=current_page_item" if controller_name=="admin/skills" %> ><a class="MenuBarItemSubmenu" href="#"><img src="/images/admin/Preppy-icon.png">Skills</a>
+					 <ul>
+						<li><%= link_to "Create Skills", new_admin_skill_path %> </li>
+						<li><%= link_to "Browse Skills", admin_skills_path %> </li>
+					 </ul>
+				</li>
+				
+				<li<%= " class=current_page_item" if controller_name=="admin/subscribers" %> ><a href="#"><img src="/images/admin/contract-icon.png">Subscribers</a>
+					<ul>
+						<li><%= link_to "Create Subscribers", new_admin_subscriber_path %></li>
+						<li><%= link_to "Browse Subscribers", admin_subscribers_path %></li>
+					</ul>
+				</li>
+
+				<li<%= " class=current_page_item" if controller_name=="admin/buyers" %> ><a href="#"><img src="/images/admin/buyer-icon.png">Buyers</a>
+				  <ul>
+					<li><%= link_to "Create Buyers", new_admin_buyer_path %></li>
+					<li><%= link_to "Browse Buyers", admin_buyers_path %></li>
+				  </ul>
+				</li>
+
+				<li<%= " class=current_page_item" if controller_name=="admin/adoptions" %> ><a href="#"><img src="/images/admin/cat-icon.png">Adoptions</a>
+				  <ul>
+					<li><%= link_to "Create Adoptions", new_admin_adoption_path %></li>
+					<li><%= link_to "Browse Adoptions", admin_adoptions_path %></li>
+				  </ul>
+				</li>
+
+				<li<%= " class=current_page_item" if controller_name=="admin/sponsorships" %> ><a href="#"><img src="/images/admin/spons-icon.png">Sponsorships</a>
+				  <ul>
+					<li><%= link_to "Create Sponsorships", new_admin_sponsorship_path %></li>
+					<li><%= link_to "Browse Sponsorships", admin_sponsorships_path %></li>
+				  </ul>
+				</li>
+
+				<li<%= " class=current_page_item" if controller_name=="admin/sponsors" %> ><a href="#"><img src="/images/admin/User-Preppy-Blue-icon.png">Sponsors</a>
+				  <ul>
+					<li><%= link_to "Create Sponsors", new_admin_sponsor_path %></li>
+					<li><%= link_to "Browse Sponsors", admin_sponsors_path %></li>
+				  </ul>
+				</li>
+			<% end %>
+			
+			<% if session[:employee_type] == "Administrator"%>
+			
+				<li<%= " class=current_page_item" if controller_name=="admin/posts" %> ><a class="MenuBarItemSubmenu" href="#" ><img src="/images/admin/blog-post-edit-icon.png" />Posts</a>
+				  <ul>
+					<li><%= link_to "Create Posts", new_admin_post_path %> </li>
+					<li><%= link_to "Browse Posts", admin_posts_path %></li>
+				  </ul>
+				</li>
+				
+				<li<%= " class=current_page_item" if controller_name=="admin/comments" %> ><a class="MenuBarItemSubmenu" href="#" ><img src="/images/admin/Text-Bubble-icon.png" />Comments</a>
+				  <ul>
+					<li><%= link_to "Create Comments", new_admin_comment_path %> </li>
+					<li><%= link_to "Browse Comments", admin_comments_path %></li>
+				  </ul>
+				</li>
+			
+				<li<%= " class=current_page_item" if controller_name=="admin/habitat_types" %> ><a class="MenuBarItemSubmenu" href="#" ><img src="/images/admin/Habitat.png" />Habitat Types</a>
+				  <ul>
+					<li><%= link_to "Create Habitat Types", new_admin_habitat_type_path %> </li>
+					<li><%= link_to "Browse Habitat Types", admin_habitat_types_path %></li>
+				  </ul>
+				</li>
+
+				<li<%= " class=current_page_item" if controller_name=="admin/habitats" %> ><a class="MenuBarItemSubmenu" href="#" ><img src="/images/admin/Habitat-icon.png" />Habitat</a>
+				  <ul>
+					<li><%= link_to "Create Habitats", new_admin_habitat_path %></li>
+					<li><%= link_to "Browse Habitats", admin_habitats_path %></li>
+				  </ul>
+				</li>
+				
+				<li<%= " class=current_page_item" if controller_name=="admin/zoomaps" %> ><a class="MenuBarItemSubmenu" href="#" ><img src="/images/admin/System-Map-icon.png" />Zoomap</a>
+				  <ul>
+					<li><%= link_to "Create Zoomap", new_admin_zoomap_path %></li>
+					<li><%= link_to "Browse Zoomaps", admin_zoomaps_path %></li>
+				  </ul>
+				</li>
+				
+				<li<%= " class=current_page_item" if controller_name=="admin/map_areas" %> ><a class="MenuBarItemSubmenu" href="#" ><img src="/images/admin/System-Map-icon2.png" />Map Area</a>
+				  <ul>
+					<li><%= link_to "Create Map Area", new_admin_map_area_path %></li>
+					<li><%= link_to "Browse Map Areas", admin_map_areas_path %></li>
+				  </ul>
+				</li>				
+
+			
+				<li<%= " class=current_page_item" if controller_name=="admin/users" %> ><a href="#"><img src="/images/admin/User-Preppy-Red-icon.png">Users</a>
+				  <ul>
+					<li><%= link_to "Create Users", new_admin_user_path %></li>
+					<li><%= link_to "Browse Users", admin_users_path %></li>
+				  </ul>
+				</li>
+				
+				
+			<% end %>
+			
+			
+
+
+	</ul>
+ 
+ </div>

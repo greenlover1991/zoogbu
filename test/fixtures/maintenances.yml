@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  habitat: 
+  maintenance_date: 2011-07-21
+  maintenance: 2011-07-21 10:59:31
+  description: MyText
+
+two:
+  habitat: 
+  maintenance_date: 2011-07-21
+  maintenance: 2011-07-21 10:59:31
+  description: MyText

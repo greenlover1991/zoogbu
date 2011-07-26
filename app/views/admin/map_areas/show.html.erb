@@ -1,0 +1,36 @@
+<h1>
+<%=h@map_area.name%><font size=2>&nbsp;[<%= link_to "Edit", edit_admin_map_area_path(@map_area) %>]</font></h1>
+
+<div class="post">
+<table id="shows" align="center">
+<tr>
+	<td rowspan="7" width="400" height="300" align="center">
+
+<% if @map_area.img_url.blank?%>
+	<img src="/images/data/noimage.jpg" alt="NO IMAGE AVAILABLE" width="400"; height=auto; />
+<% else %>
+	<img src="<%= @map_area.img_url%>" alt="<%=@map_area.description%>"  width="400"; height=auto />
+<% end %>
+
+	</td>
+<tr>
+
+<tr><td width="150">Map Area: </td>
+<td><%=h @map_area.name %></td>
+</tr>
+
+<tr><td>ZooMap: </td> 
+<td><%= link_to @map_area.zoomap.name, admin_zoomap_path(@map_area.zoomap) %></td>
+</tr>
+
+
+<tr><td>Habitat: </td> 
+<td><%= link_to @map_area.habitat.name, admin_habitat_path(@map_area.habitat) %></td>
+</tr>
+
+<tr>
+<td colspan="3"><%=h @map_area.description %></td>
+</tr>
+</table>
+
+</div>

@@ -1,0 +1,132 @@
+
+
+
+<%= f.error_messages %>
+
+
+<p>
+<%= f.label "Name:" %></br>
+<%= f.text_field :name %>
+</p>
+
+
+<p>
+<%= f.label "Map Area Description:" %></br>
+<%= f.text_area :description %>
+</p>
+
+
+
+<p>
+	<img id="chosen_map" onclick="tag_map(event);" />
+		<img src="/images/admin/point.gif" id="rect" style="position:relative;visibility:hidden;z-index:2;">
+	<p> Select a Zoomap </p>
+	<p>Click twice on different spots of the image to form a rectangle.</p>
+	<p>Click the third time to reset.</p>
+</p>
+
+<p>
+<%= f.label "Zoomap:" %></br> 
+<%= f.collection_select :zoomap_id, Zoomap.find(:all), :id, :name, :prompt =>"Select a Zoomap" %>
+		<a onclick="change_map();" style="cursor:pointer;"> 
+		View 
+		</a>
+</p>
+
+<p>
+<%= f.label "X1:" %> <%= f.text_field :x1, :readonly=>"readonly"%> <%= f.label "Y1:" %> <%= f.text_field :y1, :readonly=>"readonly"%><br/>
+<%= f.label "X2:" %> <%= f.text_field :x2, :readonly=>"readonly"%> <%= f.label "Y2:" %> <%= f.text_field :y2, :readonly=>"readonly"%>
+</p>
+
+
+<p>
+<%= f.label "Habitat:" %></br> 
+<%= f.collection_select :habitat_id, Habitat.find(:all, :order=>"name"), :id, :name, :prompt =>"Select a Habitat"%>
+</p>
+
+
+
+
+<p>
+<%= f.submit button%>
+</p>
+
+<script type="text/javascript" >
+	var ctr = 0;
+	var x1, x2, y1, y2 = 0;
+	
+	function change_map()
+	{
+		
+		var map_id = parseInt(document.getElementById("map_area_zoomap_id").value);
+		var zoomap = "";
+		<% zms = Zoomap.find(:all) %>
+		<% zms.each do |zm| %>
+			if(<%= zm.id %> == map_id)
+				zoomap = '<%= zm.img_url %>';
+				
+		<% end %>
+		
+		document.getElementById("chosen_map").src = zoomap;
+		document.getElementById("chosen_map").width = 980;
+		document.getElementById("chosen_map").height = 612;
+	}
+	
+	
+	function tag_map(event){
+		ctr = (ctr + 1) % 3;
+		var pos_x = event.offsetX?(event.offsetX):event.pageX-document.getElementById("chosen_map").offsetLeft;
+		var pos_y = event.offsetY?(event.offsetY):event.pageY-document.getElementById("chosen_map").offsetTop;
+		switch(ctr)
+		{
+			case 1:
+					document.getElementById("map_area_x1").value = pos_x;
+					document.getElementById("map_area_y1").value = pos_y;
+					x1 = pos_x;
+					y1 = pos_y;
+					x2 = pos_x;
+					y2 = pos_y;
+					
+				break;
+				
+			case 2:
+					// if the formed rectangle is right to left
+					if(pos_x < x1) 
+						x1 = pos_x;
+					else
+						x2 = pos_x;
+						
+					// if the formed rectanble is bottom to top	
+					if(pos_y < y1)
+						y1 = pos_y;
+						
+					else
+						y2 = pos_y;
+					
+					document.getElementById("map_area_x1").value = x1;
+					document.getElementById("map_area_y1").value = y1;
+					document.getElementById("map_area_x2").value = x2;
+					document.getElementById("map_area_y2").value = y2;
+					
+					//document.getElementById("rect").style.left = x1;
+					//document.getElementById("rect").style.top = y1 ;
+					//document.getElementById("rect").height = y2 - y1;
+					//document.getElementById("rect").width = x2 - x1;
+					//document.getElementById("rect").style.visibility = "visible";
+					
+				break;
+				
+				
+				default:
+					document.getElementById("map_area_x1").value = "";
+					document.getElementById("map_area_y1").value = "";
+					document.getElementById("map_area_x2").value = "";
+					document.getElementById("map_area_y2").value = "";
+					
+					//document.getElementById("rect").style.visibility = "hidden" ;
+				break;
+		
+		}
+		
+	}
+</script>

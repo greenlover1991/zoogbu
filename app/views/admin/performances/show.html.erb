@@ -1,0 +1,28 @@
+<h1>Performance on 
+<%=h@performance.event.name%><font size=2>&nbsp;[<%= link_to "Edit", edit_admin_performance_path(@performance) %>]</font></h1>
+
+<div class="post">
+<table id="shows" align="center">
+
+<tr><td width="150">Event Name:</td>
+<td><%= link_to @performance.event.name, admin_event_path(@performance.event) %></td>
+</tr>
+
+<tr><td>Performance  date:</td> 
+<td><%= @performance.event_date.strftime("%B %d, %Y, %A") %></td>
+</tr>
+
+<tr><td>Performance Time Start:</td> 
+<td><%= @performance.event_start.strftime("%I : %M %p")%></td>
+</tr>
+<tr><td>Performance Time End:</td> 
+<td><%= @performance.event_end.strftime("%I : %M %p")%></td>
+</tr>
+
+<tr><td>No. of visitors: </td>
+<td><%= @performance.no_of_visitors %></td>
+</tr>
+
+</table>
+</div>
+

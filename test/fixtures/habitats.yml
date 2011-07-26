@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  animals_count: 1
+  max_occupants: 1
+  img_url: MyString
+  img_description: MyText
+  description: MyText
+  habitat_type: 
+
+two:
+  name: MyString
+  animals_count: 1
+  max_occupants: 1
+  img_url: MyString
+  img_description: MyText
+  description: MyText
+  habitat_type: 

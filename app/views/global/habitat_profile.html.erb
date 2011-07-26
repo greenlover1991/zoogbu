@@ -1,0 +1,47 @@
+<div id="main" class="wide">
+	<div id="profile">
+		<table>
+			<tr>
+				<td>
+					<div id="profile_img">
+						<img src=<%= @habitat.img_url %> width="95%" />
+						<h4><i><%= @habitat.img_description %></i></h4>				
+					</div>
+				</td>
+				<td rowspan="2" valign="top">
+					<div id="animals_chillin">
+							<% for animal in @habitat.animals %>
+								<h2><%= link_to "#{animal.name}", "/zoogle/animal_profile/#{animal.id}" %></h2>
+							<% end %>
+							<h3>What's Happening Here:</h3>
+							<% for event in @habitat.events %> 
+								<h2> <%= link_to event.name, "/zoogle/event_profile/#{event.id}" %> </h2>
+							<% end %>
+					</div>	
+				</td>
+			</tr>	
+				
+			<tr>
+				<td>
+					<div id="habitat_profile">
+						<p><b><%= @habitat.description %></b></p> <br />
+						<p>Name: <b><%= @habitat.name %></b></p>
+						<p>Occupants: <b><%= @habitat.animals_count %></b></p>
+						<p>Max Occupants: <b><%= @habitat.max_occupants %></b></p>
+						<p>Habitat Type: <b><%= @habitat.habitat_type.name %><b></p>
+					</div>
+				</td>
+				<td>
+					<div id="related_links">
+						<% for habitat in @related %>
+							<p><b><%= link_to habitat.name,
+							 "/zoogle/habitat_profile/#{habitat.id}" %></b><p>
+						<% end %>	
+					</div>
+				</td>
+			</tr>
+
+		</table>
+
+	</div>
+</div>

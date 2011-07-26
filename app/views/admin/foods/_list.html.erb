@@ -1,0 +1,19 @@
+<table border="2" align="center" >
+<tr class="table_head"><td><b><%= link_to "ID", "/admin/food/page/#{@current_page}/sort/id" %></b></td>
+    <td><b><%= link_to "NAME", "/admin/animal/page/#{@current_page}/sort/name" %></b></td>
+    <td><b><%= link_to "QUANTITY ON HAND", "/admin/animal/page/#{@current_page}/sort/qty_on_hand" %></b></td>
+    <td><b>OPERATIONS</b></td>
+</tr>
+<% @foods.each do |f| %>
+<tr>
+<td><%=f.id %></td>
+<td><%= f.name%></td>
+<td><%=f.qty_on_hand %></td>
+<td>	<%= link_to "Show", admin_food_path(f) %>
+	<%= link_to "Edit", edit_admin_food_path(f) %>
+	<%= link_to "Delete", admin_food_path(f), :confirm=>"Are you sure?",:method=>'delete' %>
+</td>
+</tr>
+  <% end %>
+</table>
+

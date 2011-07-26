@@ -1,0 +1,35 @@
+
+	<div style="clear:both;"></div>
+
+
+
+	<div id="page">
+
+		<p>Administrator Site for Zoo Database Management System.<i> Not an administrator? Click <a href="/"><font color="#FF0000">here</font> </a>to visit the official website.</i></p>
+
+	
+	  <table width="800" align="center" class="extform">
+	    <tr>
+	   	<td align="center"><img src="/images/admin/login.png" width=400 height=300/></td>
+	    	<td align="center">
+			<% form_tag "/admin/authenticating" do %>
+			  <table width="300">
+				<tr>
+			          <td colspan="2"><font size=5>Administrator Login</font></td>
+		  		<tr>
+			  	  <td width="83">Admin ID:</td>
+		  	  	  <td width="144"><%= text_field_tag :username, nil, :size=>30 %></td>
+				<tr>
+		  		  <td>Password:</td><td><%= password_field_tag :password, nil,:size=>30 %></td>
+				<tr>
+		  		  <td colspan="2" class="button">
+		    		  <%= submit_tag "Log in" %>
+		  		  </td>
+	   		  </table>
+	      		<% end %>
+	   	 </td>
+	     </tr>
+	   </table>
+	</div>
+
+	<div style="clear: both;">&nbsp;</div>

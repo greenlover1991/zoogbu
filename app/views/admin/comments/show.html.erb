@@ -1,0 +1,27 @@
+<h1>
+<%=h @comment.author %><font size=2>&nbsp;[<%= link_to "Edit", edit_admin_comment_path(@comment) %>]</font></h1>
+
+<div class="post">
+<table id="shows" align="center">
+
+<tr><td width="120">Comment author: </td>
+<td><%=h @comment.author %></td>
+</tr>
+<tr><td>Comment: </td>
+<td><%=h @comment.body %></td>
+</tr>
+<tr><td>Created At:</td>
+<td><%= @comment.created_at.strftime("%B %d, %Y, %A %I : %M %p") %>
+</td>
+</tr>
+<tr><td>Status: </td>
+<td><%=h @comment.status %></td>
+</tr>
+<tr><td>Post: </td>
+<td><%= link_to @comment.post.title, admin_post_path(@comment.post) %></td>
+</tr>
+</table>
+</div>
+
+
+

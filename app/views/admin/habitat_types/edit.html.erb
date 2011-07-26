@@ -1,0 +1,7 @@
+<h1>Edit Habitat Type</h1>
+
+<% form_for @habitat_type, :url=>admin_habitat_type_path(@habitat_type) do |f| %>
+  <%= render :partial=>'form', :locals=>{:f=>f,:button=>'Update'}%>
+<% end %>
+
+

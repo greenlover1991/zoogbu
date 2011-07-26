@@ -1,0 +1,18 @@
+<div id=sidebar>
+	<% for post in @posts %>
+		<div id=box>
+			<h4><%= post.title %></h4><br />
+			<%= "<img src=#{post.img_url} width=200px />" if post.img_url %>
+		</div>
+	<% end %>
+</div>
+			
+<div id=main>
+	
+	<h2 style="width: 500px;margin: 25px auto 0 auto;"> <img src="/images/global/cebu_zoo.jpg"/>The Cebu City Zoo and Conservation Center, conceived in the late 1950s as a project by Hon. Raymundo A. Crystal, 
+	is the only zoo found in Cebu and considered a tourist destination and a place for stimulating learning in a leisurely and fun way. It is situated above Beverly Hills Residential area at Capitol Hills, in Barangay Calunasan and is 
+	home to 39 animals, with 11 species considered endemic to the Philippines and cannot be found elsewhere in the world
+	.Currently, it is under the management of Mr. Giovanni Stephen Romarate after succession was passed from 
+	Fr. Eleuterio Tropa to the city government.
+	</h2>
+</div>

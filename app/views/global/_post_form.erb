@@ -1,0 +1,27 @@
+<div id=clipboard>
+	<h1>Write to us</h1>
+		<% form_for (@post), :url=>'subscribing',:html => {:multipart => true} do |f| %>
+			<%= hidden_field_tag :form_type, 'post' %>
+			<%= f.error_messages %>
+			<table>
+				<tr>
+					<td>Title:</td><td><%= f.text_field :title %></td>
+				</tr>
+				<tr>
+					<td>Author:</td><td><%= f.text_field :author %></td>
+				</tr>
+				<tr>
+					<td>Body:</td><td><%= f.text_area :body, :rows=>10, :cols=>24 %></td>
+				</tr>
+				<tr>
+					<td>Image Thumbnail(optional):</td><td><%= f.file_field :img_upload %></td>
+				</tr>
+				<tr>
+					<td>Image Description(optional):</td><td><%= f.text_field :img_description %></td>
+				</tr>
+				<tr>
+					<td><%= f.submit "Post!" %></td>
+				</tr>
+			</table>
+		<% end %>
+</div>

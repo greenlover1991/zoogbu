@@ -1,0 +1,13 @@
+<table>
+	<tr>
+		<td>Kingdom: <%= collection_select("animal", "kingdom_id", Kingdom.find(:all, :order => "name"), :id, :name, :prompt=>"Select a kingdom") %></td>
+		<td>Phylum: <%= collection_select("animal", "phylum_id", Phylum.find(:all, :order => "name"), :id, :name) %></td>
+		<td>Class: <%= collection_select("animal", "aclass_id", Aclass.find(:all, :order => "name"), :id, :name) %></td>
+		<td>Order: <%= collection_select("animal", "aorder_id", Aorder.find(:all, :order => "name"), :id, :name) %></td>
+	</tr>
+	<tr>
+		<td>Family: <%= collection_select("animal", "family_id", Family.find(:all, :order => "name"), :id, :name) %></td>
+		<td>Genus: <%= collection_select("animal", "genus_id", Genus.find(:all, :order => "name"), :id, :name) %></td>
+		<td>Species: <%= collection_select("animal", "species_id", Species.find(:all, :order => "name"), :id, :name) %></td>
+	</tr>
+</table>

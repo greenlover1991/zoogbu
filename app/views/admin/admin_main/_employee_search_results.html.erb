@@ -1,0 +1,23 @@
+	<table id="search_table" align="center">
+		<tr class="table_caption"><td colspan=7>EMPLOYEE SEARCH RESULTS</td></tr>
+		<tr class="table_head">
+			<td>Full Name</td>
+			<td>Age</td>
+			<td>Gender</td>
+			<td>Address</td>
+			<td>Contact Number</td>
+			<td>Type</td>
+		</tr>
+		
+	<% for employee in @employees %> 	
+		<tr>
+			<td> <%= link_to employee.complete_name, admin_employee_path(employee) %> </td>
+			<td> <%= employee.age%> </td>
+			<td> <%= employee.gender %> </td>
+			<td> <%= employee.address %> </td>
+			<td> <%= employee.tel_no %> / <%= employee.mob_no %> </td>
+			<td> <%= employee.employee_type %> </td>
+		</tr>
+	<% end %>
+	
+</table>

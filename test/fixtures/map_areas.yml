@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  x1: 1
+  x2: 1
+  y1: 1
+  y2: 1
+  zoomap: 
+  habitat: 
+  img_url: MyString
+
+two:
+  name: MyString
+  description: MyText
+  x1: 1
+  x2: 1
+  y1: 1
+  y2: 1
+  zoomap: 
+  habitat: 
+  img_url: MyString

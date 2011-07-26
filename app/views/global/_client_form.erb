@@ -1,0 +1,26 @@
+<div id=clipboard>
+	<h1>Support Us</h1>
+	<% form_for (@client), :url=>'subscribing' do |f| %>
+		<%= hidden_field_tag :form_type, 'client' %>
+		<%= error_messages_for :client %>
+		<table>
+			<tr>
+				<td>Company Name:</td><td><%= f.text_field :name %></td>
+			</tr>
+			<tr>
+			<td>Email Address(optional):</td><td><%= text_field_tag :email %></td>
+			</tr>
+			<tr>
+			<td>Contact Number:</td><td><%= f.text_field :contact_no %></td>
+			</tr>
+			<tr>
+			<td><%= radio_button_tag :client_type, "sponsor" %> Sponsor 
+			<%= radio_button_tag :client_type, "buyer" %> Adopt</td>
+			<td><%= check_box_tag :mailing, "true" %>I Want To Recieve Updates Through Mail.</td>
+			</tr>
+			<tr>
+			<td><%= f.submit "Submit" %></td>
+			</tr>
+		</table>
+	<% end %>
+</div>

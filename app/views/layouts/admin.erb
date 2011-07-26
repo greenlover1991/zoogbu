@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<link rel="icon" href="/images/admin/favicon.ico" type="image/ico" />
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>ZoogBu - <%= @title %> </title>
+
+  <%= stylesheet_link_tag 'admin' %>
+     <%= stylesheet_link_tag 'SpryMenuBarVertical' %>
+     <%= javascript_include_tag 'SpryMenuBar' %>
+  <%= javascript_include_tag 'prototype' %>
+</head>
+<body>
+
+	<% if flash[:notice] %>
+	  <%= "<script type=text/javascript> alert('#{flash[:notice]}');</script>" %>
+	<% end %>
+	
+	<%= render :partial=>'/admin/admin_main/header' %>
+	
+	
+
+        <% if session[:username] %>
+	  <div id="page">
+             <% if @title=="Summary"  ||  @title=="Reports"%>
+           	<%= render :partial=>'/admin/admin_main/summary_sidebar'%>
+	     <% elsif @title=="Management"%>
+           	<%= render :partial=>'/admin/admin_main/management_sidebar'%>
+	     <% end %>
+	  <div id="content"> <%= yield  %></div>
+    	  </div>
+        <% else %>
+          <%= yield%>
+        <% end %>
+
+        
+		<script type="text/javascript">
+					var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgRight:"/images/SpryMenuBarRightHover.gif"});
+		</script>
+
+	<%= render :partial=>'/admin/admin_main/footer' %>
+</body>
+</html>

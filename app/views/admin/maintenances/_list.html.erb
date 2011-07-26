@@ -1,0 +1,22 @@
+<table border="2" align="center" >
+<tr class="table_head"><td><b><%= link_to "ID", "/admin/maintenance/page/#{@current_page}/sort/id" %></b></td>
+    <td><b>HABITAT</b></td>
+    <td><b><%= link_to "MAINTENANCE DATE", "/admin/maintenance/page/#{@current_page}/sort/maintenance_date" %></b></td>
+    <td><b><%= link_to "MAINTENANCE TIME", "/admin/animal/page/#{@current_page}/sort/maintenance_time" %></b></td>
+    <td><b>OPERATIONS</b></td>
+</tr>
+<% @maintenances.each do |m| %>
+<tr>
+<td><%= m.id %></td>
+<td><%= m.habitat.name%></td>
+<td><%= m.maintenance_date%></td>
+<td><%= m.maintenance_time.hour %>:<%= m.maintenance_time.min%> </td>
+
+<td>	<%= link_to "Show", admin_maintenance_path(m) %>
+	<%= link_to "Edit", edit_admin_maintenance_path(m) %>
+	<%= link_to "Delete", admin_maintenance_path(m), :confirm=>"Are you sure?",:method=>'delete' %>
+</td>
+</tr>
+  <% end %>
+</table>
+

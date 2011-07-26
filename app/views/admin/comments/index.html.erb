@@ -1,0 +1,21 @@
+<h1>Comments</h1><div class="post">
+  <%= render :partial => 'list' %>
+<%= link_to "New Comment", new_admin_comment_path %>
+
+<% if @current_page > 1 %>
+	<%= link_to "back", "/admin/comment/page/#{@current_page-1}/sort/#{@sort_by}" %>
+<% end %>
+
+<% @no_of_pages.times do |page|%>
+	<% unless page+1 == @current_page %>
+		<%= link_to page+1, "/admin/comment/page/#{page+1}/sort/#{@sort_by}" %>
+	<% else %>
+		<%= page+1 %>
+	<% end %>
+<% end %>
+
+<% if @current_page < @no_of_pages %>
+	<%= link_to "next", "/admin/comment/page/#{@current_page+1}/sort/#{@sort_by}" %>
+<% end %>
+
+</div>

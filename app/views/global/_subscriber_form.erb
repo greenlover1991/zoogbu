@@ -1,0 +1,24 @@
+<div id=clipboard>
+	<h1> Mailing List </h1>
+		<% form_for (@subscriber), :url=>'subscribing' do |f| %>
+			<%= hidden_field_tag :form_type, 'subscriber' %>
+			<%= f.error_messages %>
+			<table>
+				<tr>
+					<td>First Name:</td><td><%= f.text_field :first_name %></td>
+				</tr>
+				<tr>
+					<td>Last Name:</td><td><%= f.text_field :last_name %></td>
+				</tr>
+				<tr>
+					<td>Email Address:</td><td><%= f.text_field :email %></td>
+				</tr>
+				<tr>
+					<td>Contact Number(optional):</td><td><%= f.text_field :contact_no %></td>
+				</tr>
+				<tr>
+					<td><%= f.submit "Send Me Spam!" %></td>
+				</tr>
+			</table>
+		<% end %>
+</div>

@@ -1,0 +1,7 @@
+<h1>Edit Performance</h1>
+
+<% form_for @performance, :url=>admin_performance_path(@performance) do |f| %>
+  <%= render :partial=>'form', :locals=>{:f=>f,:button=>'Update'}%>
+<% end %>
+
+

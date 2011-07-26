@@ -1,0 +1,50 @@
+<div id=main class="map" >		
+  <div id="content">
+    <div id="arrow_wrap">
+      <div id="prev"><a href="javascript:void(0);"><img src="/images/global/gallery_prev.png" alt="prev" /></a></div>
+      <div id="photo_wrap">
+        <div id="close_msg" class="hide">
+          <p>Click Image To close</p>
+        </div>
+        <ul id="thumbs">
+          <li>
+		    <% ctr = 0 %>
+			
+			<% @images.each do |ani| %>
+				<% if ani.img_url != "" && !ani.img_url.nil? %>
+					<%= "<ul class = group >" if ctr%6==0%>
+					
+					  <li>
+						<div class="thumb_img">
+							<a href="<%= ani.img_url %>">
+								<img src="<%= ani.img_url %>" alt="<%= ani.img_description %>" width=268 height=201/>
+							</a>
+						</div>
+						<div class="thumb_desc">
+						  <p><%= ani.img_description %></p>
+						</div>
+					  </li>
+					  <% ctr+=1 %>
+					<%= "</ul>" if ctr%6==0 %>  
+					
+				<% end %>
+			<% end %>
+			
+			
+		  </li>
+        </ul>
+        <!-- end thumbs-->
+        <div class="loading"><img src="/images/global/ajax-loader.gif" /></div>
+        <div id="large_images">
+          
+        </div>
+        <!--end photo wrap -->
+        
+      </div>
+      <div id="next"><a href="javascript:void(0);"><img src="/images/global/gallery_next.png" alt="next" /></a></div>
+      <!--end arrow wrap -->
+    </div>
+    <!-- end content-->
+  </div>
+
+	</div>

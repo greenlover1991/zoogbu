@@ -1,0 +1,23 @@
+<table border="2" align="center" >
+<tr class="table_head"><td><b><%= link_to "ID", "/admin/map_area/page/#{@current_page}/sort/id" %></b></td>
+    <td><b><%= link_to "MAP AREA NAME", "/admin/map_area/page/#{@current_page}/sort/name" %></b></td>
+	<td><b>ZOOMAP NAME</b></td>
+	<td><b>HABITAT</b></td>
+    <td><b>OPERATIONS</b></td>
+</tr>
+<% @map_areas.each do |ma| %>
+<tr>
+<td><%= ma.id %></td>
+<td><%= ma.name %></td>
+<td><%= link_to ma.zoomap.name, admin_zoomap_path(ma.zoomap) %></td>
+<td><%= link_to ma.habitat.name, admin_habitat_path(ma.habitat) %></td>
+<td>	<%= link_to "Show", admin_map_area_path(ma) %>
+	<%= link_to "Edit", edit_admin_map_area_path(ma) %>
+	<%= link_to "Delete", admin_map_area_path(ma), :confirm=>"Are you sure?",:method=>'delete' %>
+</td>
+</tr>
+  <% end %>
+</table>
+
+
+

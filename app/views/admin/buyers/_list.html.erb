@@ -1,0 +1,17 @@
+<table border="2" align="center" >
+<tr class="table_head"><td><b>ID</b></td>
+    <td><b><%= link_to "BUYER'S NAME", "/admin/buyer/page/#{@current_page}/sort/name" %></b></td>
+	<td><b>OPERATIONS</b></td>
+</tr>
+<% @buyers.each do |a| %>
+<tr>
+<td><%=a.id %></td>
+<td><%= a.name%> </td>
+<td>	<%= link_to "Show", admin_buyer_path(a) %>
+	<%= link_to "Edit", edit_admin_buyer_path(a) %>
+	<%= link_to "Delete", admin_buyer_path(a), :confirm=>"Are you sure?",:method=>'delete' %>
+</td>
+</tr>
+  <% end %>
+</table>
+

@@ -1,0 +1,16 @@
+<table border="2" align="center" >
+<tr class="table_head"><td><b><%= link_to "ID", "/admin/sponsor/page/#{@current_page}/sort/id" %></b></td>
+    <td><b><%= link_to "SPONSOR NAME", "/admin/sponsor/page/#{@current_page}/sort/name" %></b></td>
+    <td><b>OPERATIONS</b></td>
+</tr>
+<% @sponsors.each do |p| %>
+<tr>
+<td><%= p.id %></td>
+<td><%= p.name %> </td>
+<td>	<%= link_to "Show", admin_sponsor_path(p) %>
+	 <%= link_to "Edit", edit_admin_sponsor_path(p) %>
+         <%= link_to "Delete", admin_sponsor_path(p), :confirm=>"Are you sure?",:method=>'delete' %>
+</td>
+</tr>
+  <% end %>
+</table>

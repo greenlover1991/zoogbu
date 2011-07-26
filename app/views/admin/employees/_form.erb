@@ -1,0 +1,98 @@
+<%= f.error_messages %>
+<script type=text/javascript>
+	function setVisibility(elem, visibility)
+	{
+		document.getElementById(elem).style.visibility = visibility;
+	}
+</script>
+
+<p>
+<%= f.label "Employee Type:" %></br> 
+
+<%= f.radio_button(:employee_type, "Zookeeper", :onclick=>"setVisibility('other_type', 'hidden');") %> <%= f.label :type_zookeeper, "Zookeeper" %></br> 
+<%= f.radio_button(:employee_type, "Trainer", :onclick=>"setVisibility('other_type', 'hidden');") %> <%= f.label :type_trainer, "Trainer" %></br>
+<%= f.radio_button(:employee_type, "Human Resource", :onclick=>"setVisibility('other_type', 'hidden');") %> <%= f.label :type_trainer, "Human Resource" %></br>
+<%= f.radio_button(:employee_type, "Administrator", :onclick=>"setVisibility('other_type', 'hidden');") %> <%= f.label :type_trainer, "Administrator" %></br>
+<%= f.radio_button(:employee_type, "Others", :onclick=>"setVisibility('other_type', 'visible');") %> <%= f.label :type_others, "Others" %> <span id=other_type style="visibility:hidden;"> <%= f.text_field :other_employee_type %></span></br>
+</p>
+
+
+<p>
+<%= f.label "First Name:" %></br>
+<%= f.text_field :first_name %>
+</p>
+
+<p>
+<%= f.label "Middle Name:" %></br>
+<%= f.text_field :middle_name %>
+</p>
+
+
+<p>
+<%= f.label "Last Name:" %></br>
+<%= f.text_field :last_name %>
+</p>
+
+<p>
+<%= f.label "Birthdate:" %></br>
+<%= f.date_select :birthdate, :start_year => Time.now.year - 70, :end_year => Time.now.year %>
+</p>
+
+
+<p>
+<%= f.label "Address:" %></br>
+<%= f.text_field :address %>
+</p>
+
+
+
+<p>
+<%= f.label "Gender:" %></br> 
+<%= f.radio_button(:gender, "Male") %>
+<%= f.label :gender_male, "Male" %></br> 
+<%= f.radio_button(:gender, "Female") %>
+<%= f.label :gender_female, "Female" %></br> 
+</p>
+
+<p>
+<%= f.label "Telephone No. :" %></br>
+<%= f.text_field :tel_no%>
+</p>
+
+<p>
+<%= f.label "Mobile No. :" %></br>
+<%= f.text_field :mob_no %>
+</p>
+
+<p>
+<%= f.label "Salary:" %></br>
+<%= f.text_field :salary %>
+</p>
+
+<p>
+<%= f.label "Date Employed:" %></br>
+<%= f.date_select :date_employed, :start_year => Time.now.year-30, :end_year => Time.now.year %>
+</p>
+
+
+<p>
+<%= f.label "Image URL:" %></br>
+<%= f.file_field :img_upload %>
+</p>
+
+
+<p> 
+<h2> Skills: </h2> 
+<ul>
+<% Skill.find(:all, :order=>"name").each do |sk|%>
+   <li>
+		<%= check_box_tag "employee[skill_ids][]", sk.id, @employee.skills.include?(sk) %>
+		<%= sk.name %>
+   </li>
+<% end %>
+</ul>
+</p>
+
+<p>
+<%= f.submit button%>
+</p>

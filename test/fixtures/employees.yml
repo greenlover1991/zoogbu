@@ -1,0 +1,31 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  first_name: MyString
+  middle_name: MyString
+  last_name: MyString
+  address: MyString
+  birthdate: 2011-07-21
+  gender: MyString
+  tel_no: MyString
+  mob_no: MyString
+  salary: 1.5
+  date_employed: 2011-07-21
+  years_employed: 1
+  img_url: MyString
+  employee_type: MyString
+
+two:
+  first_name: MyString
+  middle_name: MyString
+  last_name: MyString
+  address: MyString
+  birthdate: 2011-07-21
+  gender: MyString
+  tel_no: MyString
+  mob_no: MyString
+  salary: 1.5
+  date_employed: 2011-07-21
+  years_employed: 1
+  img_url: MyString
+  employee_type: MyString

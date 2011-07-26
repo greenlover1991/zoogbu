@@ -1,0 +1,20 @@
+<table border="2" align="center" >
+<tr class="table_head"><td><b><%= link_to "ID", "/admin/performance/page/#{@current_page}/sort/id" %></b></td>
+    <td><b>EVENT</b></td>
+    <td><b><%= link_to "EVENT DATE", "/admin/performance/page/#{@current_page}/sort/event_date" %></b></td>
+    <td><b><%= link_to "EVENT TIME", "/admin/performance/page/#{@current_page}/sort/event_time" %></b></td>
+    <td><b>OPERATIONS</b></td>
+</tr>
+<% @performances.each do |p| %>
+<tr>
+<td><%= p.id %></td>
+<td><%= p.event.name %> </td>
+<td><%= p.event_date %></td>
+<td> <%= p.event_start.hour %>:<%= p.event_start.min %> - <%= p.event_end.hour %>:<%= p.event_end.min %></td>
+<td>	<%= link_to "Show", admin_performance_path(p) %>
+	 <%= link_to "Edit", edit_admin_performance_path(p) %>
+         <%= link_to "Delete", admin_performance_path(p), :confirm=>"Are you sure?",:method=>'delete' %>
+</td>
+</tr>
+  <% end %>
+</table>

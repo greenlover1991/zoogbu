@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  animal_id: 1
+  sponsor_id: 1
+  sponsor_date: 2011-07-21
+
+two:
+  animal_id: 1
+  sponsor_id: 1
+  sponsor_date: 2011-07-21

@@ -1,0 +1,17 @@
+<div id=sidebar>
+	<div id=box>
+		<h4>Get To Know</h4> <h2><%= @animal.name %></h2>
+		<%= link_to image_tag("#{@animal.img_url}", :width=>"200"), "/zoogle/animal_profile/#{@animal.id}" %>
+	</div>
+				
+	<div id=box>
+		<h4>Visit The</h4> <h2><%= @habitat.name %></h2>
+		<%= link_to image_tag("#{@habitat.img_url}", :width=>"200"), "/zoogle/habitat_profile/#{@habitat.id}" %>		
+	</div>
+				
+	<div id=box>
+		<h4>Join Our</h4> <h2><%= @event.name %></h2>
+		<%= link_to image_tag("#{@event.img_url}", :width=>"200"), "/zoogle/event_profile/#{@event.id}" %>		
+
+	</div>
+</div>

@@ -1,0 +1,22 @@
+<h1>Habitats</h1>
+<div class="post">
+  <%= render :partial => 'list' %>
+<%= link_to "New Habitat", new_admin_habitat_path %>
+
+<% if @current_page > 1 %>
+	<%= link_to "back", "/admin/habitat/page/#{@current_page-1}/sort/#{@sort_by}" %>
+<% end %>
+
+<% @no_of_pages.times do |page|%>
+	<% unless page+1 == @current_page %>
+		<%= link_to page+1, "/admin/habitat/page/#{page+1}/sort/#{@sort_by}" %>
+	<% else %>
+		<%= page+1 %>
+	<% end %>
+<% end %>
+
+<% if @current_page < @no_of_pages %>
+	<%= link_to "next", "/admin/habitat/page/#{@current_page+1}/sort/#{@sort_by}" %>
+<% end %>
+
+</div>

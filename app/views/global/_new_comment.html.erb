@@ -1,0 +1,10 @@
+<% form_for @comment, :url=>'commenting' do |f| %>
+
+	<p>
+		<%= f.hidden_field :post_id %>
+		<%= f.text_field :author %>
+		<%= text_area_tag(:body, :cols=>30, :rows=>2) %>
+	</p>
+	<%= f.submit "Comment" %>
+	
+<% end %>

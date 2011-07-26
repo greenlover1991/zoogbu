@@ -1,0 +1,12 @@
+<div id=sidebar>
+<ul>
+  <h1> Performances</h1>
+  <% if @events_for_the_day %>
+    <h2><%= @events_for_the_day[0].event_date.strftime("%B %d, %A")  %></h2>
+    
+    <% @events_for_the_day.each do |e| %>
+      <p> <h3><%= link_to h(e.event.name), "/zoogle/event_profile/#{e.event.id}" %></h3> <strong>Start:</strong> <%= e.event_start.strftime("%I : %M %p") %><br/><strong>End:</strong> <%= e.event_end.strftime("%I : %M %p") %></p>
+    <% end %>
+  <% end %>
+</ul>
+</div>

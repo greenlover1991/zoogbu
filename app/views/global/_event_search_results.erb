@@ -1,0 +1,18 @@
+<h1> Where You At Event? </h1>
+	<table>
+		<tr>
+			<th> Name</th>
+			<th> Habitat</th>
+			<th> Date</th>
+			
+		</tr>
+		
+	<% for e in @events %> 	
+		<tr>
+			<th> <%= link_to e.event.name, "/zoogle/event_profile/#{e.event.id}" %> </th>
+			<th> <%= link_to e.event.habitat.name, "/zoogle/habitat_profile/#{e.event.habitat.id}" %> </th>
+			<th> <%= e.event_date %> </th>
+		</tr>
+		
+	<% end %>
+	</table>

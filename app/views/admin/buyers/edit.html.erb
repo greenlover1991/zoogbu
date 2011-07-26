@@ -1,0 +1,7 @@
+<h1>Edit Buyer</h1>
+
+<% form_for @buyer, :url=>admin_buyer_path(@buyer) do |f| %>
+  <%= render :partial=>'form', :locals=>{:f=>f,:button=>'Update'}%>
+<% end %>
+
+

@@ -1,0 +1,7 @@
+<h1>New Comment</h1>
+
+<% form_for @comment,:url=>'create' do |f|%>
+  <%= render :partial=>'form', :locals=>{:f=>f,:button=>'Create'}%>
+<% end %>
+
+
