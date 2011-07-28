@@ -1,6 +1,6 @@
 <div id="header">
 	<div id="logo">
-		<h1><%= link_to "&nbsp;", '/admin' %></h1>
+		<h1><%= link_to '&nbsp;', '/admin' %></h1>
 	</div>
 
 	<% if session[:username] %>
@@ -16,7 +16,7 @@
 
 
 <div id="search" class="extform">
-		<% form_tag "/admin/search" do %>
+		<%= form_tag "/admin/search" do =%>
 		<img src="/images/admin/Zoom-icon.png" height="16">
 		Search: <%= text_field_tag :search_string %>
 		<font class="button">
