@@ -1,4 +1,4 @@
-class Admin::MaintenancesController < dmin::AdminMainController
+class Admin::MaintenancesController < Admin::AdminMainController
   
   before_filter :require_zookeeper, :except=>[:index,:show]
   def index
