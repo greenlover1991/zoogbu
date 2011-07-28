@@ -2,7 +2,7 @@ class Admin::AdminMainController < ApplicationController
   layout 'admin'
 
   before_filter :require_login, :except=> [:login,:authenticating]
-  # initialize title to management so that the browsing of animals, etc will have management_sidebar
+  # initialize title to management so that the browsing of #animals, etc will have management_sidebar
   before_filter :init_title
 
 				
