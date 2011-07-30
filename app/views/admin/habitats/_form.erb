@@ -12,7 +12,7 @@
 	}
 </script>
 
-<%= form_for([:admin,@habitat], :html=> {:multipart=>true}) do |f|%>
+<%= form_for([:admin,@habitat]) do |f|%>
   <% if @habitat.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@habitat.errors.count, "error") %> prohibited this habitat from being saved:</h2>
@@ -32,7 +32,7 @@
 
 <p>
 <%= f.label "Image URL:" %></br>
-<%= f.file_field :img_upload %>
+<%= f.text_field :img_url %>
 </p>
 
 <p>

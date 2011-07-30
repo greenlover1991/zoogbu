@@ -152,7 +152,7 @@ class Admin::AdminMainController < ApplicationController
 	annual_animal_count = []
 
 	while(starting_date.year <= Time.now.year)
-		annual_animal_count << Animal.count(:conditions => "created_at <= #{Date.new(starting_date.year,12,31)}")
+		annual_animal_count << Animal.count(:conditions => "created_at <= #{Date.new(starting_date.year,12,31).to_s(:db)}")
 		starting_date = starting_date.since(1.year) 
 	end
 	

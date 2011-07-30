@@ -1,5 +1,4 @@
 class Animal < ActiveRecord::Base
-  include AdminMainHelper
   belongs_to :kingdom
   belongs_to :phylum
   belongs_to :aclass
@@ -17,14 +16,14 @@ class Animal < ActiveRecord::Base
 
   #virtual attributes
   attr_accessor :new_kingdom, :new_phylum, :new_aclass, :new_aorder, 
-                :new_family, :new_genus, :new_species, :img_upload
+                :new_family, :new_genus, :new_species
 
   #validations
   validates_presence_of :name, :habitat_id
   validates_uniqueness_of :name
   validates_numericality_of :height, :weight, :value
   
-  before_save :create_new_taxonomy, :calculate_age, :process_file_uploader
+  before_save :create_new_taxonomy, :calculate_age
 
   def create_new_taxonomy
     create_kingdom(:name=> new_kingdom) unless new_kingdom.blank? 

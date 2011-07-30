@@ -1,5 +1,4 @@
 class Employee < ActiveRecord::Base
-  include AdminMainHelper
   has_and_belongs_to_many :skills
   has_and_belongs_to_many :maintenances
   has_and_belongs_to_many :events
@@ -9,9 +8,9 @@ class Employee < ActiveRecord::Base
   validates_presence_of :first_name, :last_name, :address, :birthdate, :gender, :salary, :date_employed
   validates_numericality_of :salary
     
-  before_save :calculate_years_employed, :assign_other_employee_type, :process_file_uploader
+  before_save :calculate_years_employed, :assign_other_employee_type
 
-  attr_accessor :other_employee_type, :img_upload
+  attr_accessor :other_employee_type
 
   def calculate_years_employed
     self.years_employed = Time.now.year - date_employed.year

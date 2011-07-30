@@ -1,5 +1,4 @@
 class MapArea < ActiveRecord::Base
-  include AdminMainHelper
   belongs_to :zoomap
   belongs_to :habitat
 
@@ -7,9 +6,6 @@ class MapArea < ActiveRecord::Base
   validates_uniqueness_of :name
   validates_numericality_of :x1, :x2, :y1, :y2, :greater_than=>0
 
-  attr_accessor :img_upload
-	
-  before_save :process_file_uploader
 	
   
 end
