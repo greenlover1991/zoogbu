@@ -255,7 +255,7 @@ class GlobalController < ApplicationController
       @no_of_days = cur_month.end_of_month.day
       @month = Date::MONTHNAMES[cur_month.month]
       @year = cur_month.year
-      @performances = Performance.find(:all, :select=>"event_date, event_id", :conditions=> "event_date >= '#{cur_month.beginning_of_month}' AND event_date <= '#{cur_month.end_of_month}'", :order=> "event_date ASC", :group=>"event_date" )
+      @performances = Performance.find(:all, :select=>"event_date, event_id", :conditions=> "event_date >= '#{cur_month.beginning_of_month}' AND event_date <= '#{cur_month.end_of_month}'", :order=> "event_date ASC", :group=>[:event_date,:event_id] )
 
     end
     
