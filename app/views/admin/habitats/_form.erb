@@ -1,4 +1,4 @@
-<%= f.error_messages %>
+
 
 <script type=text/javascript>
 	function setHidden(elem)
@@ -11,6 +11,19 @@
 		document.getElementById(elem).style.visibility = "visible";
 	}
 </script>
+
+<%= form_for([:admin,@habitat], :html=> {:multipart=>true}) do |f|%>
+  <% if @habitat.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@habitat.errors.count, "error") %> prohibited this habitat from being saved:</h2>
+
+      <ul>
+      <% @habitat.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
 <p>
 <%= f.label "Name:" %></br>
@@ -53,3 +66,4 @@
 <p>
 <%= f.submit button%>
 </p>
+<%end%>

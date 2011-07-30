@@ -11,9 +11,7 @@ class Admin::PerformancesController < Admin::AdminMainController
 	@current_page = params[:page_no] ? params[:page_no].to_i : 1
 	
 	@sort_by = params[:sort_by] ? params[:sort_by] : "id"
-	
-	redirect_to "/admin/performance/page/1/sort/#{@sort_by}" if params[:page_no].to_i > @no_of_pages
-	
+
 	@performances = Performance.find(:all, :offset =>(@current_page-1) * 10, :limit=> 10, :order=>"#{@sort_by}")
 	
   end

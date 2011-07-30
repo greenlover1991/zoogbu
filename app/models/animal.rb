@@ -1,4 +1,5 @@
 class Animal < ActiveRecord::Base
+  include AdminMainHelper
   belongs_to :kingdom
   belongs_to :phylum
   belongs_to :aclass
@@ -23,7 +24,7 @@ class Animal < ActiveRecord::Base
   validates_uniqueness_of :name
   validates_numericality_of :height, :weight, :value
   
-  before_save :create_new_taxonomy, :calculate_age, :process_file_upload
+  before_save :create_new_taxonomy, :calculate_age, :process_file_uploader
 
   def create_new_taxonomy
     create_kingdom(:name=> new_kingdom) unless new_kingdom.blank? 
@@ -39,17 +40,7 @@ class Animal < ActiveRecord::Base
     self.age = Time.now.year - birthdate.year
   end
   
-  
-  def process_file_upload
-	if img_upload
-		unless img_upload.class === "String"
-  	      dest = File.open("#{RAILS_ROOT}/public/images/data/#{img_upload.original_filename}", 'wb')
-		  dest.write(img_upload.read)
-		  self.img_url = "/images/data/#{img_upload.original_filename}" 
-		end 
-	end
-  end
-  
+   
   def scientific_name
 	self.genus.name + " " + self.species.name
   end

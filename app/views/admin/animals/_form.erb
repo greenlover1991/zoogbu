@@ -1,4 +1,3 @@
-<%= f.error_messages %>
 
 <script type=text/javascript>
 	function setHidden(elem)
@@ -11,6 +10,20 @@
 		document.getElementById(elem).style.visibility = "visible";
 	}
 </script>
+
+<%= form_for([:admin,@animal], :html=> {:multipart=>true}) do |f|%>
+  <% if @animal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@animal.errors.count, "error") %> prohibited this animal from being saved:</h2>
+
+      <ul>
+      <% @animal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 <p>
 <%= f.label "Name:" %><br/>
 <%= f.text_field :name %>
@@ -159,3 +172,4 @@
 <p>
 <%= f.submit button%>
 </p>
+<%end%>

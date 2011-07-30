@@ -127,20 +127,26 @@ class GlobalController < ApplicationController
   def previous_month
     session[:month_ctr] -= 1
     calendarize(Date.today.months_since(session[:month_ctr]))
-    render :partial=>'calendar'
+    respond_to do |format|
+        format.js { render :layout=>false }
+    end
   end
 
   def next_month
     session[:month_ctr] += 1
     calendarize(Date.today.months_since(session[:month_ctr]))
-    render :partial=>'calendar'
+    respond_to do |format|
+        format.js { render :layout=>false }
+    end
   end
   
   
   
   def show_events
     @events_for_the_day = Performance.find(:all ,:conditions=> "event_date = '#{params[:event_date]}' ", :order=>"event_start ASC", :include=>'event')
-    render :partial=>'performances'
+    respond_to do |format|
+        format.js { render :layout=>false }
+    end
   end
   
   def subscribing

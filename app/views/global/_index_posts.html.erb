@@ -33,7 +33,7 @@
 			<a onclick="document.getElementById('<%= "comment_form" + "#{post.id}"%>').style.visibility= 'visible';document.getElementById('add_comment').style.visibility = 'hidden';" style="cursor:pointer"> Add a comment </a>
 		</div>
 		<div id=comment_form<%=post.id%> style="visibility:hidden;">
-			<% form_for @comment, :url=>'/commenting' do |f| %>
+			<%= form_for @comment, :url=>'/commenting' do |f| %>
 					<%= f.hidden_field :post_id, :value=>post.id %>
 					Author: <p><%= f.text_field :author %> <a onclick="document.getElementById('<%= "comment_form" + "#{post.id}"%>').style.visibility= 'hidden';document.getElementById('add_comment').style.visibility='visible';" style="cursor:pointer">x</a></p> 
 					Comment: <p><%= f.text_area :body, :cols=>25, :rows=>2 %></p>

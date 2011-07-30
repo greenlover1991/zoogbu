@@ -1,4 +1,16 @@
-<%= f.error_messages %>
+<%= form_for([:admin,@buyer]) do |f|%>
+  <% if @buyer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@buyer.errors.count, "error") %> prohibited this buyer from being saved:</h2>
+
+      <ul>
+      <% @buyer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 
 <p>
 <%= f.label "Name:"%> </br>
@@ -18,3 +30,4 @@
 <p>
 <%= f.submit button%>
 </p>
+<%end%>

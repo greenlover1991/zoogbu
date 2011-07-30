@@ -1,7 +1,5 @@
 <h1>Edit Map Area</h1>
 
-<% form_for @map_area, :url=>admin_map_area_path(@map_area), :html => {:multipart => true} do |f| %>
-  <%= render :partial=>'form', :locals=>{:f=>f,:button=>'Update'}%>
-<% end %>
+<%= render :partial=>'form', :locals=>{:button=>'Update'}%>
 
 

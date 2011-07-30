@@ -1,4 +1,15 @@
-<%= f.error_messages %>
+<%= form_for([:admin,@status]) do |f|%>
+  <% if @status.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@status.errors.count, "error") %> prohibited this status from being saved:</h2>
+
+      <ul>
+      <% @status.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
 <p>
 <%= f.label "Name:"%> </br>
@@ -13,3 +24,4 @@
 <p>
 <%= f.submit button%>
 </p>
+<%end%>

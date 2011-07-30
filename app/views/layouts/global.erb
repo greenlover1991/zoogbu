@@ -18,15 +18,12 @@
   
 </head>
 <body id=<%= @title %>>
-	<% if flash[:notice] %>
-	  <%= "<script type=text/javascript> alert('#{flash[:notice]}');</script>" %>
-	<% end %>
 	<div id="wrapper" >
 	
   		<%= render :partial => 'banner' %>
 		
 		
-		
+  	        <%= flash[:notice] %>
 	        <%= yield %>	
  		
 

@@ -1,8 +1,19 @@
 <div id=clipboard>
 	<h1>Support Us</h1>
-	<% form_for (@client), :url=>'subscribing' do |f| %>
+	<%= form_for (@client), :url=>'subscribing' do |f| %>
 		<%= hidden_field_tag :form_type, 'client' %>
-		<%= error_messages_for :client %>
+<% if @client.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+      <ul>
+      <% @client.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 		<table>
 			<tr>
 				<td>Company Name:</td><td><%= f.text_field :name %></td>

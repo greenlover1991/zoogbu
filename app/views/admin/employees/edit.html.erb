@@ -1,7 +1,5 @@
 <h1>Edit Employee</h1>
 
-<% form_for @employee, :url=>admin_employee_path(@employee), :html => {:multipart => true} do |f| %>
-  <%= render :partial=>'form', :locals=>{:f=>f,:button=>'Update'}%>
-<% end %>
+<%= render :partial=>'form', :locals=>{:button=>'Update'}%>
 
 

@@ -2,9 +2,7 @@
 
 <h1>New Map Area</h1>
 
-<% form_for @map_area,:url=>'create', :html => {:multipart => true} do |f|%>
-  <%= render :partial=>'form', :locals=>{:f=>f,:button=>'Create'}%>
-<% end %>
+<%= render :partial=>'form', :locals=>{:button=>'Create'}%>
 
 
 

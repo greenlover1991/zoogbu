@@ -1,8 +1,19 @@
 <div id=clipboard>
 	<h1> Mailing List </h1>
-		<% form_for (@subscriber), :url=>'subscribing' do |f| %>
+		<%= form_for (@subscriber), :url=>'subscribing' do |f| %>
 			<%= hidden_field_tag :form_type, 'subscriber' %>
-			<%= f.error_messages %>
+<% if @subscriber.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@subscriber.errors.count, "error") %> prohibited this subscriber from being saved:</h2>
+
+      <ul>
+      <% @subscriber.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+			
 			<table>
 				<tr>
 					<td>First Name:</td><td><%= f.text_field :first_name %></td>

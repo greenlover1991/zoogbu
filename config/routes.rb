@@ -60,15 +60,8 @@ Zoogbu::Application.routes.draw do
 
   root :controller=> 'global', :action=>'index'
   
-  match '/admin/:action', :controller=>'admin/admin_main' 
-  match '/admin', :controller=> 'admin/admin_main', :action => 'index'
 
 
-  namespace :admin do
-    resources :habitat_types,:habitats, :animals, :statuses, :skills, :employees, 
-	:maintenances, :foods, :events, :performances, :subscribers, :buyers, :sponsors, :adoptions, 
-	:sponsorships, :users, :posts, :comments, :zoomaps, :map_areas
-  end
 
   namespace :admin do
     match '/animal/page/:page_no/sort/:sort_by', :controller=> 'animals', :action=>'index'
@@ -91,8 +84,13 @@ Zoogbu::Application.routes.draw do
     match '/zoomap/page/:page_no/sort/:sort_by', :controller=> 'zoomaps', :action=>'index'
     match '/map_area/page/:page_no/sort/:sort_by', :controller=> 'map_areas', :action=>'index'
 
+    resources :habitat_types,:habitats, :animals, :statuses, :skills, :employees, 
+	:maintenances, :foods, :events, :performances, :subscribers, :buyers, :sponsors, :adoptions, 
+	:sponsorships, :users, :posts, :comments, :zoomaps, :map_areas
   end
 
+  match '/admin/:action', :controller=>'admin/admin_main' 
+  match '/admin', :controller=> 'admin/admin_main', :action => 'index'
 
   match '/:action', :controller => 'global'
   match '/index/page/:page_no', :controller=> 'global', :action=>'index'

@@ -1,10 +1,24 @@
-<%= f.error_messages %>
+
 <script type=text/javascript>
 	function setVisibility(elem, visibility)
 	{
 		document.getElementById(elem).style.visibility = visibility;
 	}
 </script>
+
+<%= form_for([:admin,@employee], :html=> {:multipart=>true}) do |f|%>
+  <% if @employee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+
+      <ul>
+      <% @employee.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 
 <p>
 <%= f.label "Employee Type:" %></br> 
@@ -96,3 +110,4 @@
 <p>
 <%= f.submit button%>
 </p>
+<%end%>

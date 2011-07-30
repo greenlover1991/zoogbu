@@ -1,7 +1,5 @@
 <h1>Edit Sponsor</h1>
 
-<% form_for @sponsor, :url=>admin_sponsor_path(@sponsor) do |f| %>
-  <%= render :partial=>'form', :locals=>{:f=>f,:button=>'Update'}%>
-<% end %>
+<%= render :partial=>'form', :locals=>{:button=>'Update'}%>
 
 

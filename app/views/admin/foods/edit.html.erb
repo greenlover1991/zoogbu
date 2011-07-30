@@ -1,7 +1,6 @@
 <h1>Edit Food</h1>
 
-<% form_for @food, :url=>admin_food_path(@food) do |f| %>
-  <%= render :partial=>'form', :locals=>{:f=>f,:button=>'Update'}%>
-<% end %>
+<%= render :partial=>'form', :locals=>{:button=>'Update'}%>
+
 
 

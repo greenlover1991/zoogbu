@@ -1,4 +1,16 @@
-<%= f.error_messages %>
+<%= form_for([:admin,@zoomap], :html=> {:multipart=>true}) do |f|%>
+  <% if @zoomap.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@zoomap.errors.count, "error") %> prohibited this zoomap from being saved:</h2>
+
+      <ul>
+      <% @zoomap.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 
 <p>
 <%= f.label "Name:" %></br>
@@ -29,3 +41,4 @@
 <p>
 <%= f.submit button%>
 </p>
+<%end%>

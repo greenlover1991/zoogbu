@@ -1,7 +1,15 @@
+<%= form_for([:admin,@map_area], :html=> {:multipart=>true}) do |f|%>
+  <% if @map_area.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@map_area.errors.count, "error") %> prohibited this map_area from being saved:</h2>
 
-
-
-<%= f.error_messages %>
+      <ul>
+      <% @map_area.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
 
 <p>
@@ -50,7 +58,7 @@
 <p>
 <%= f.submit button%>
 </p>
-
+<%end%>
 <script type="text/javascript" >
 	var ctr = 0;
 	var x1, x2, y1, y2 = 0;
@@ -71,7 +79,7 @@
 		document.getElementById("chosen_map").width = 980;
 		document.getElementById("chosen_map").height = 612;
 	}
-	
+
 	
 	function tag_map(event){
 		ctr = (ctr + 1) % 3;

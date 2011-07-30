@@ -11,8 +11,7 @@ class Admin::SubscribersController < Admin::AdminMainController
 	@current_page = params[:page_no] ? params[:page_no].to_i : 1
 	
 	@sort_by = params[:sort_by] ? params[:sort_by] : "status DESC"
-	
-	redirect_to "/admin/subscriber/page/1/sort/#{@sort_by}" if params[:page_no].to_i > @no_of_pages
+
 	
 	@subscribers = Subscriber.find(:all, :offset =>(@current_page-1) * 10, :limit=> 10, :order=>"#{@sort_by}")
 	    

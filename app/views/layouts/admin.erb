@@ -14,10 +14,6 @@
 </head>
 <body>
 
-	<% if flash[:notice] %>
-	  <%= "<script type=text/javascript> alert('#{flash[:notice]}');</script>" %>
-	<% end %>
-	
 	<%= render :partial=>'/admin/admin_main/header' %>
 	
 	
@@ -29,9 +25,13 @@
 	     <% elsif @title=="Management"%>
            	<%= render :partial=>'/admin/admin_main/management_sidebar'%>
 	     <% end %>
-	  <div id="content"> <%= yield  %></div>
+	  <div id="content">
+             <%= flash[:notice] %>
+		 <%= yield  %>
+	  </div>
     	  </div>
         <% else %>
+	    <%= flash[:notice] %>
           <%= yield%>
         <% end %>
 

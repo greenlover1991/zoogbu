@@ -1,8 +1,19 @@
 <div id=clipboard>
 	<h1>Write to us</h1>
-		<% form_for (@post), :url=>'subscribing',:html => {:multipart => true} do |f| %>
+		<%= form_for (@post), :url=>'subscribing',:html => {:multipart => true} do |f| %>
 			<%= hidden_field_tag :form_type, 'post' %>
-			<%= f.error_messages %>
+<% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 			<table>
 				<tr>
 					<td>Title:</td><td><%= f.text_field :title %></td>

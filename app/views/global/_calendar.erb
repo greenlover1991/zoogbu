@@ -6,13 +6,13 @@
 <table align=center>
  <tr>
 	<th align=center> 
-		<%= link_to_remote  "<img src=/images/global/prev.gif />", :url=>'/previous_month', :method=>'get', :update=>'calendar' %> 
+		<%= link_to raw("<img src=/images/global/prev.gif />"), {:action=>'previous_month'}, :remote=>true,:method=>'get', :update=>'calendar' %> 
 	</th>	
 	<th align=center>	
 		<h1> <%= @month %> &nbsp <%= @year %> </h1>
 	</th>
 	<th align=center>	
-		<%= link_to_remote "<img src=/images/global/next.gif />",  :url=>'/next_month', :method=>'get', :update=>'calendar' %>	
+		<%= link_to raw("<img src=/images/global/next.gif />"),  {:action=>'next_month'}, :remote=>true, :method=>'get', :update=>'calendar' %>	
 	</th> 
  </tr>
 </table>
@@ -28,19 +28,19 @@
    <% day = 0 %>
    <% @performances.each do |perform| %>
      <% while (day+=1) != perform.event_date.day && day <= @no_of_days %>
-	   <%= "<ul>" if (day-1+@skip_days)%7==0 %>
+	   <%= raw "<ul>" if (day-1+@skip_days)%7==0 %>
 	   <li><%= day %></li>
        
      <% end %>
 	 <%= "<ul>" if (day==perform.event_date.day && (day)%7==0) %>
-	 <li> <%= day %> <%= link_to_remote "<img src=#{perform.event.img_url} width=60px>",  :url=>"/show_events/#{perform.event_date}", :method=>'get', :update=>'performances' %></li>
+	 <li> <%= day %> <%= link_to raw("<img src='#{perform.event.img_url}' width=60px>"),  {:action=>"show_events", :event_date=>"#{perform.event_date}"}, :remote=>true, :method=>'get', :update=>'performances' %></li>
    <% end %>
    
 
    
    <% if day <= @no_of_days %>
      <% (@no_of_days-day).times do |d| %>
-     <%= "<ul>" if (day+d+@skip_days)%7==0 %><li><%= day+d+1 %></li>
+     <%= raw "<ul>" if (day+d+@skip_days)%7==0 %><li><%= day+d+1 %></li>
      <% end %>
    <% end %>
    

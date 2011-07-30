@@ -1,4 +1,15 @@
-<%= f.error_messages %>
+<%= form_for([:admin,@habitat_type]) do |f|%>
+  <% if @habitat_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@habitat_type.errors.count, "error") %> prohibited this habitat_type from being saved:</h2>
+
+      <ul>
+      <% @habitat_type.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
 <p>
 <%= f.label "Name:"%> </br>
@@ -13,3 +24,4 @@
 <p>
 <%= f.submit button%>
 </p>
+<%end%>

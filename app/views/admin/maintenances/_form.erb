@@ -1,4 +1,15 @@
-<%= f.error_messages %>
+<%= form_for([:admin,@maintenance]) do |f|%>
+  <% if @maintenance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@maintenance.errors.count, "error") %> prohibited this maintenance from being saved:</h2>
+
+      <ul>
+      <% @maintenance.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
 
 <p>
@@ -48,3 +59,4 @@
 <p>
 <%= f.submit button%>
 </p>
+<%end%>

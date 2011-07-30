@@ -1,4 +1,15 @@
-<%= f.error_messages %>
+<%= form_for([:admin,@sponsorship]) do |f|%>
+  <% if @sponsorship.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sponsorship.errors.count, "error") %> prohibited this sponsorship from being saved:</h2>
+
+      <ul>
+      <% @sponsorship.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
 <p>
 <%= f.label "Animal:" %></br> 

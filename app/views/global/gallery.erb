@@ -12,7 +12,7 @@
 			
 			<% @images.each do |ani| %>
 				<% if ani.img_url != "" && !ani.img_url.nil? %>
-					<%= "<ul class = group >" if ctr%6==0%>
+					<%= raw "<ul class = group >" if ctr%6==0%>
 					
 					  <li>
 						<div class="thumb_img">
@@ -25,7 +25,7 @@
 						</div>
 					  </li>
 					  <% ctr+=1 %>
-					<%= "</ul>" if ctr%6==0 %>  
+					<%= raw "</ul>" if ctr%6==0 %>  
 					
 				<% end %>
 			<% end %>

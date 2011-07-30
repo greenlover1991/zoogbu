@@ -25,30 +25,30 @@ class Admin::AdminMainController < ApplicationController
 			ss = '%' + params[:search_string] + '%'
 
 			# search for all animals by its name, description and taxonomy, given the keyword ss
-			@animals = Animal.find(:all,:joins=>['kingdom','phylum','aclass','aorder','family','genus','species','habitat'],
+			@animals = Animal.find(:all,:joins=>[:kingdom,:phylum,:aclass,:aorder,:family,:genus,:species,:habitat],
 			:conditions=>["animals.gender = ? OR animals.name LIKE ? OR animals.description LIKE ?  OR animals.motto LIKE ?
 								OR kingdoms.name LIKE ? OR phylums.name LIKE ? 
 								OR aclasses.name LIKE ? OR aorders.name LIKE ? 
 								OR families.name LIKE ? OR genus.name LIKE ?
 								OR species.name LIKE ? OR habitats.name LIKE ? ",params[:search_string] ,ss,
 								ss,ss,ss,ss,ss,ss,ss,ss,ss,ss],:order=>'animals.name')
-			@animals += Animal.find(:all, :joins=> ['statuses'], :conditions=> ["statuses.name LIKE ?",ss])
+			@animals += Animal.find(:all, :joins=> [:statuses], :conditions=> ["statuses.name LIKE ?",ss])
 			
 			#Search for Employees only if HR or admin
 			if ["Human Resource", "Administrator"].include? session[:employee_type]
 				@employees = Employee.find(:all,:conditions=>["first_name LIKE ? OR  last_name LIKE ? OR middle_name LIKE ? OR employee_type LIKE ? OR
 												address LIKE ? OR gender = ?",ss,ss,ss,ss,ss,params[:search_string] ])
-				@employees += Employee.find(:all, :joins=> ['events','skills'],
+				@employees += Employee.find(:all, :joins=> [:events,:skills],
 				:conditions=> ["events.name LIKE ? OR skills.name LIKE ?",ss,ss])
 			end
 			#Search for Events
 			@events = Event.find(:all,:conditions=>["name LIKE ? OR  description LIKE ?",ss,ss ])
-			@events += Event.find(:all, :joins=> ['habitat'],
+			@events += Event.find(:all, :joins=> [:habitat],
 			:conditions=> ["habitats.name LIKE ? OR habitats.description LIKE ?",ss,ss])
 			
 			#Search for habitats
 			@habitats = Habitat.find(:all,:conditions=>["name LIKE ? OR  description LIKE ?",ss,ss ])
-			@habitats += Habitat.find(:all, :joins=> ['habitat_type'], :conditions=> ["habitat_types.name LIKE ? OR habitat_types.description LIKE ?",ss,ss])
+			@habitats += Habitat.find(:all, :joins=> [:habitat_type], :conditions=> ["habitat_types.name LIKE ? OR habitat_types.description LIKE ?",ss,ss])
 
 			#Delete Duplicates
 			@employees.uniq!
@@ -152,9 +152,10 @@ class Admin::AdminMainController < ApplicationController
 	annual_animal_count = []
 
 	while(starting_date.year <= Time.now.year)
-		annual_animal_count << Animal.count(:conditions => "EXTRACT(YEAR FROM created_at) <= EXTRACT(YEAR FROM '#{starting_date.to_s(:db)}')")
+		annual_animal_count << Animal.count(:conditions => "created_at <= #{Date.new(starting_date.year,12,31)}")
 		starting_date = starting_date.since(1.year) 
 	end
+	
 
 	annual_growth = [1]
 

@@ -1,4 +1,16 @@
-<%= f.error_messages %>
+<%= form_for([:admin,@sponsor]) do |f|%>
+  <% if @sponsor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sponsor.errors.count, "error") %> prohibited this sponsor from being saved:</h2>
+
+      <ul>
+      <% @sponsor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 
 <p>
 <%= f.label "Name:"%> </br>
@@ -24,3 +36,4 @@
 <p>
 <%= f.submit button%>
 </p>
+<%end%>

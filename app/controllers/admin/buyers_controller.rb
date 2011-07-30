@@ -13,8 +13,6 @@ class Admin::BuyersController < Admin::AdminMainController
 	
 	@sort_by = params[:sort_by] ? params[:sort_by] : "id"
 	
-	redirect_to "/admin/buyer/page/1/sort/#{@sort_by}" if params[:page_no].to_i > @no_of_pages
-	
 	@buyers = Buyer.find(:all, :offset =>(@current_page-1) * 10, :limit=> 10, :order=>"#{@sort_by}")
 	
   end
